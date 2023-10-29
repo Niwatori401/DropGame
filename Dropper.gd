@@ -3,9 +3,12 @@ var position_offset : float = 0
 const move_speed = 800
 @export var ball_scene : PackedScene
 @onready var score_counter = get_tree().get_nodes_in_group("score")[0]
+@onready var mainnode = get_tree().get_nodes_in_group("main")[0]
+
 const ball_sprite_scale_for_next = 0.18;
 const ball_sprite_scale_for_next_next = 0.14;
 var can_drop = true;
+var can_move = true;
 
 var current_ball_index : int
 var next_ball_index : int
@@ -23,7 +26,9 @@ func _ready():
 	self.rail_length = texture.get_width() * scale.x
 
 func _process(delta):
-	
+	if !can_move:
+		return;
+		
 	if Input.is_action_pressed("move_left"):
 		position_offset -= delta * move_speed
 	if Input.is_action_pressed("move_right"):
@@ -43,6 +48,9 @@ func _process(delta):
 	
 	$DropperHead.transform.origin[0] = position_offset
 
+func _on_new_game():
+	can_move = true;
+
 
 func spawn_falling_ball():
 	var newball = ball_scene.instantiate()
@@ -55,7 +63,13 @@ func spawn_falling_ball():
 	newball.get_node("Hitbox/Sprite").play(str(newball.ball_type))
 	newball.update_scale()
 	newball.connect("popped", score_counter._on_ball_popped)
+	newball.connect("game_over", mainnode._on_game_over)
+	newball.connect("game_over", self._on_game_over)
 	
+
+func _on_game_over():
+	can_move = false;
+
 func get_random_index():
 	var randval = randf()
 	

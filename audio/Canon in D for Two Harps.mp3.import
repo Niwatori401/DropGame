@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Canon in D for Two Harps.mp3-e59a553097ccd502
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

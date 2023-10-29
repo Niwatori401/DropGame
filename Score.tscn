@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://3m53sb0x2u24"]
+[gd_scene load_steps=4 format=3 uid="uid://3m53sb0x2u24"]
 
+[ext_resource type="FontFile" uid="uid://demx0aaebdrhf" path="res://font/cookie/Cookie-Regular.ttf" id="1_3qvw5"]
 [ext_resource type="Script" path="res://Score.gd" id="1_4nnbi"]
 
 [sub_resource type="Theme" id="Theme_03bm5"]
@@ -11,5 +12,7 @@ offset_top = 51.0
 offset_right = 471.0
 offset_bottom = 153.0
 theme = SubResource("Theme_03bm5")
+theme_override_fonts/normal_font = ExtResource("1_3qvw5")
+theme_override_font_sizes/normal_font_size = 69
 text = "Score: 100"
 script = ExtResource("1_4nnbi")
