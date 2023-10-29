@@ -20,7 +20,7 @@ func _process(delta):
 
 
 func restart_game():
-	$Score/ScoreLabel.text = str(0);
+	$Score/ScoreLabel.score = 0;
 	$GameOver.hide();
 	$BGM.stop();
 	$BGM.play();
