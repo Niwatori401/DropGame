@@ -1,8 +1,11 @@
 extends Sprite2D
 var position_offset : float = 0
-const move_speed = 1
+const move_speed = 800
 @export var ball_scene : PackedScene
 @onready var score_counter = get_tree().get_nodes_in_group("score")[0]
+const ball_sprite_scale_for_next = 0.18;
+const ball_sprite_scale_for_next_next = 0.14;
+var can_drop = true;
 
 var current_ball_index : int
 var next_ball_index : int
@@ -25,11 +28,13 @@ func _process(delta):
 		position_offset -= delta * move_speed
 	if Input.is_action_pressed("move_right"):
 		position_offset += delta * move_speed
-	if Input.is_action_just_pressed("drop_ball"):
+	if Input.is_action_just_pressed("drop_ball") and can_drop:
+		can_drop = false;
+		$DropTimer.start();
+		$DropperHead/BallTexture.modulate.a = 0;
 		# Drop current ball
-		spawn_falling_ball()
-		# Spawn new ball
-		spawn_new_ball_texture()
+		spawn_falling_ball();
+		
 	
 	if position_offset < (-self.rail_length / 2 + ball_sprite_size[0] / 2)  / global_scale[0]:
 		position_offset = (-self.rail_length / 2 + ball_sprite_size[0] / 2) / global_scale[0]
@@ -74,12 +79,12 @@ func spawn_new_ball_texture():
 	#Set next ball texture
 	var next_ball_sprite = newball.get_node("Hitbox/Sprite").get_sprite_frames().get_frame_texture(str(self.next_ball_index), 0)
 	get_node("NextBallBackground/Ball").set_texture(next_ball_sprite)
-	get_node("NextBallBackground/Ball").scale = Vector2(0.1, 0.1) / $NextBallBackground.global_scale
+	get_node("NextBallBackground/Ball").scale = Vector2(ball_sprite_scale_for_next, ball_sprite_scale_for_next) / $NextBallBackground.global_scale
 	
 	#Set next next ball texture
 	var next_next_ball_sprite = newball.get_node("Hitbox/Sprite").get_sprite_frames().get_frame_texture(str(self.next_next_ball_index), 0)
 	get_node("NextNextBallBackground/Ball").set_texture(next_next_ball_sprite)
-	get_node("NextNextBallBackground/Ball").scale = Vector2(0.08, 0.08) / $NextNextBallBackground.global_scale
+	get_node("NextNextBallBackground/Ball").scale = Vector2(ball_sprite_scale_for_next_next, ball_sprite_scale_for_next_next) / $NextNextBallBackground.global_scale
 	
 	#Set cur ball texture and scale	
 	newball.ball_type = self.current_ball_index	
@@ -93,3 +98,11 @@ func spawn_new_ball_texture():
 	self.ball_sprite_size = orginal_scale * Vector2(ball_texture_node.texture.get_width(), ball_texture_node.texture.get_height())
 	
 	newball.queue_free()
+
+
+func _on_drop_timer_timeout():
+	$DropTimer.stop();
+	$DropperHead/BallTexture.modulate.a = 1;
+	# Spawn new ball
+	spawn_new_ball_texture();
+	can_drop = true;

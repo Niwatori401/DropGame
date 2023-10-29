@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpe33er6bhw26"]
+[gd_scene load_steps=8 format=3 uid="uid://cpe33er6bhw26"]
 
+[ext_resource type="Texture2D" uid="uid://drkbfgixngr0p" path="res://art/background.png" id="1_hjl2a"]
 [ext_resource type="PackedScene" uid="uid://cc6ijvp7lc2vn" path="res://wall.tscn" id="1_tyudq"]
+[ext_resource type="Texture2D" uid="uid://dnkcb7nqw5opm" path="res://art/box.png" id="2_0t7x2"]
 [ext_resource type="PackedScene" uid="uid://d0aasxmpat2ch" path="res://dropper.tscn" id="2_suryt"]
 [ext_resource type="PackedScene" uid="uid://232acipa188l" path="res://ball_wheel.tscn" id="3_50ynx"]
 [ext_resource type="PackedScene" uid="uid://3m53sb0x2u24" path="res://Score.tscn" id="5_34tjh"]
@@ -8,22 +10,35 @@
 
 [node name="MainRoot" type="Node"]
 
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(578.5, 325)
+scale = Vector2(0.640067, 0.630859)
+texture = ExtResource("1_hjl2a")
+
+[node name="BoxSprite" type="Sprite2D" parent="."]
+position = Vector2(601, 400)
+scale = Vector2(0.766026, 0.592461)
+texture = ExtResource("2_0t7x2")
+
 [node name="LeftWall" parent="." instance=ExtResource("1_tyudq")]
-position = Vector2(415, 390)
-scale = Vector2(-20.7904, 423.16)
+position = Vector2(384, 422)
+scale = Vector2(-8.2304, 423.16)
+texture = null
 
 [node name="LeftWall2" parent="." instance=ExtResource("1_tyudq")]
-position = Vector2(779, 390)
-scale = Vector2(-20.7904, 423.16)
+position = Vector2(817, 420)
+scale = Vector2(-9.2704, 423.16)
+texture = null
 
 [node name="BottomWall" parent="." instance=ExtResource("1_tyudq")]
-position = Vector2(597, 600)
+position = Vector2(602, 627)
 rotation = -4.71239
-scale = Vector2(15.445, -383.96)
+scale = Vector2(15.445, -449.96)
+texture = null
 
 [node name="Dropper" parent="." instance=ExtResource("2_suryt")]
 position = Vector2(601.5, 74.9531)
-scale = Vector2(349, 6.09376)
+scale = Vector2(0.52, 0.655)
 
 [node name="BallWheel" parent="." instance=ExtResource("3_50ynx")]
 position = Vector2(986, 478)
@@ -35,5 +50,5 @@ offset_top = 47.0
 offset_right = 434.0
 offset_bottom = 149.0
 
-[node name="Sprite2D" parent="." instance=ExtResource("6_ofcic")]
-position = Vector2(198, 385)
+[node name="Body" parent="." instance=ExtResource("6_ofcic")]
+position = Vector2(185, 388)

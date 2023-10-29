@@ -5,10 +5,12 @@ signal popped(ball_type)
 @export var max_ball_type : int = 8
 @export var base_scale : float = 4.675
 
-var ball_sizes = [0.6, 0.75, .9, 1.1, 1.3, 1.5, 2.0, 2.5]
+var ball_sizes = [0.6, 0.75, .9, 1.1, 1.3, 1.5, 1.8, 2.2]
 var ball_masses = [0.6, 0.75, .9, 1.1, 1.3, 1.5, 2.0, 2.5]
 var should_teleport : bool = false
 var teleport_location : Vector2 = Vector2.ZERO
+@export var time_since_last_check : float;
+@export var time_between_checks : float = 1;
 
 func _ready():
 	set_contact_monitor(true)
@@ -22,7 +24,25 @@ func update_scale():
 	self.mass = ball_masses[self.ball_type - 1]
 	
 func _process(delta):
-	pass
+	time_since_last_check += delta;
+	
+	if time_since_last_check >= time_between_checks:
+		var coliBodies = get_colliding_bodies()
+		time_since_last_check = 0;
+		
+		for body in coliBodies:
+			if body.is_in_group("ball") and body.ball_type == self.ball_type and body.ball_type < self.max_ball_type:
+				self.ball_type += 1
+				should_teleport = true
+				get_node("Hitbox/Sprite").play(str(self.ball_type))
+				update_scale()
+				var start_loc = self.get_global_transform().get_origin()
+				var end_loc = body.get_global_transform().get_origin()
+				self.teleport_location = (start_loc + end_loc) / 2
+		
+				emit_signal("popped", self.ball_type)
+				body.queue_free()
+	
 
 func _integrate_forces(state):
 	# Fixes a weird graphical issue where when spawned these balls would be super stretched.
