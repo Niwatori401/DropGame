@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0aasxmpat2ch"]
+
+[ext_resource type="Script" path="res://Dropper.gd" id="1_o2nv7"]
+[ext_resource type="PackedScene" uid="uid://c2j4w5e102pj1" path="res://ball.tscn" id="2_xhsm4"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kmga6"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ug6ea"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6ubta"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mq6i3"]
+
+[node name="Dropper" type="Sprite2D"]
+position = Vector2(604, 95.0938)
+scale = Vector2(554.5, 6.18753)
+texture = SubResource("PlaceholderTexture2D_kmga6")
+script = ExtResource("1_o2nv7")
+ball_scene = ExtResource("2_xhsm4")
+
+[node name="DropperHead" type="Sprite2D" parent="."]
+scale = Vector2(0.075, 5.755)
+texture = SubResource("PlaceholderTexture2D_ug6ea")
+
+[node name="BallTexture" type="Sprite2D" parent="DropperHead"]
+
+[node name="NextBallBackground" type="Sprite2D" parent="."]
+position = Vector2(0.711843, 0.631309)
+scale = Vector2(0.123653, 7.04)
+texture = SubResource("PlaceholderTexture2D_6ubta")
+
+[node name="Ball" type="Sprite2D" parent="NextBallBackground"]
+
+[node name="NextNextBallBackground" type="Sprite2D" parent="."]
+position = Vector2(0.828797, -6.64139)
+scale = Vector2(0.0809085, 4.43)
+texture = SubResource("PlaceholderTexture2D_mq6i3")
+
+[node name="Ball" type="Sprite2D" parent="NextNextBallBackground"]

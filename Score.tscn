@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://3m53sb0x2u24"]
+
+[ext_resource type="Script" path="res://Score.gd" id="1_4nnbi"]
+
+[sub_resource type="Theme" id="Theme_03bm5"]
+default_font_size = 50
+
+[node name="Score" type="RichTextLabel" groups=["score"]]
+offset_left = 99.0
+offset_top = 51.0
+offset_right = 471.0
+offset_bottom = 153.0
+theme = SubResource("Theme_03bm5")
+text = "Score: 100"
+script = ExtResource("1_4nnbi")
