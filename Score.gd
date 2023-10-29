@@ -14,7 +14,6 @@ func _process(delta):
 
 
 func _on_ball_popped(ball_type):
-	print("POPPPPPPED")
-	self.score += ball_type * 100
+	self.score += ball_type * 5
 	self.text = "Score: " + str(score)
 	

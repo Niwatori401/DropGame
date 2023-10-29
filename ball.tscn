@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c2j4w5e102pj1"]
+[gd_scene load_steps=15 format=3 uid="uid://c2j4w5e102pj1"]
 
 [ext_resource type="Texture2D" uid="uid://cbqmp7al4ytfv" path="res://art/ball1.png" id="1_id0hd"]
 [ext_resource type="Script" path="res://ball.gd" id="1_vbfso"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dqboatysfvpln" path="res://art/ball6.png" id="7_6kms5"]
 [ext_resource type="Texture2D" uid="uid://dr3oba7i3uprc" path="res://art/ball7.png" id="8_v2er2"]
 [ext_resource type="Texture2D" uid="uid://dywncqvu0afyp" path="res://art/ball8.png" id="9_26jpf"]
+[ext_resource type="AudioStream" uid="uid://cxu67pbsv5cnv" path="res://audio/pop.ogg" id="10_56okw"]
+[ext_resource type="AudioStream" uid="uid://ce4u3a13k4gn3" path="res://audio/thump.wav" id="11_8cfyy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w0cf1"]
 friction = 0.5
@@ -95,5 +97,12 @@ shape = SubResource("CircleShape2D_ud7b0")
 scale = Vector2(0.081, 0.081)
 sprite_frames = SubResource("SpriteFrames_rvfp1")
 animation = &"3"
+
+[node name="Pop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_56okw")
+
+[node name="Thud" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_8cfyy")
+volume_db = -6.33
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

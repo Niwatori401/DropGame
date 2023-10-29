@@ -36,5 +36,6 @@ texture = ExtResource("4_12icc")
 scale = Vector2(2, 2)
 
 [node name="DropTimer" type="Timer" parent="."]
+wait_time = 0.75
 
 [connection signal="timeout" from="DropTimer" to="." method="_on_drop_timer_timeout"]

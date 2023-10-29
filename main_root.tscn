@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpe33er6bhw26"]
+[gd_scene load_steps=10 format=3 uid="uid://cpe33er6bhw26"]
 
 [ext_resource type="Texture2D" uid="uid://drkbfgixngr0p" path="res://art/background.png" id="1_hjl2a"]
 [ext_resource type="PackedScene" uid="uid://cc6ijvp7lc2vn" path="res://wall.tscn" id="1_tyudq"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://232acipa188l" path="res://ball_wheel.tscn" id="3_50ynx"]
 [ext_resource type="PackedScene" uid="uid://3m53sb0x2u24" path="res://Score.tscn" id="5_34tjh"]
 [ext_resource type="PackedScene" uid="uid://decp1b3bqjrqw" path="res://Character.tscn" id="6_ofcic"]
+[ext_resource type="AudioStream" uid="uid://0xqouh58ade0" path="res://audio/Canon in D for Two Harps.mp3" id="8_e5vxy"]
+[ext_resource type="Texture2D" uid="uid://jfutcl4fr7k7" path="res://art/boxtop.png" id="8_rmwwa"]
 
 [node name="MainRoot" type="Node"]
 
@@ -52,3 +54,13 @@ offset_bottom = 149.0
 
 [node name="Body" parent="." instance=ExtResource("6_ofcic")]
 position = Vector2(185, 388)
+
+[node name="TopOfBoxSprite" type="Sprite2D" parent="."]
+position = Vector2(601, 400)
+scale = Vector2(0.766026, 0.592461)
+texture = ExtResource("8_rmwwa")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_e5vxy")
+volume_db = -8.303
+autoplay = true
