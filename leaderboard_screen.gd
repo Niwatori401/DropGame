@@ -18,3 +18,10 @@ func _process(delta):
 func _on_back_button_pressed():
 	should_fade_out = true;
 	get_tree().create_timer(2).timeout.connect(func(): get_tree().change_scene_to_file("res://main_menu.tscn"))
+
+func get_user_score(username: String):
+	pass
+
+func get_scores(nthPlace: int, mthPlace: int):
+	
+	pass
