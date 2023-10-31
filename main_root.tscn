@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cpe33er6bhw26"]
+[gd_scene load_steps=16 format=3 uid="uid://cpe33er6bhw26"]
 
 [ext_resource type="Script" path="res://main_root.gd" id="1_0ih8u"]
 [ext_resource type="Texture2D" uid="uid://drkbfgixngr0p" path="res://art/background.png" id="1_hjl2a"]
@@ -16,6 +16,14 @@
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_36y18"]
 a = Vector2(-2, 0)
 b = Vector2(3234, -16.9999)
+
+[sub_resource type="Gradient" id="Gradient_7gajr"]
+offsets = PackedFloat32Array(0, 0.425806, 0.754839, 0.974194, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vh8or"]
+gradient = SubResource("Gradient_7gajr")
+width = 1801
 
 [node name="MainRoot" type="Node" groups=["main"]]
 script = ExtResource("1_0ih8u")
@@ -108,3 +116,12 @@ offset_right = 211.345
 offset_bottom = -12.825
 theme_override_font_sizes/font_size = 56
 text = "Press R to restart"
+
+[node name="DarkScreen" type="TextureRect" parent="."]
+visible = false
+offset_right = 1801.0
+offset_bottom = 1024.0
+scale = Vector2(0.648153, 0.639121)
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_vh8or")
+metadata/_edit_use_anchors_ = true

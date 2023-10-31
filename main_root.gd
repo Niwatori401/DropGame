@@ -7,11 +7,14 @@ var game_state : String = "RUNNING";
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$DarkScreen.show();
+	$DarkScreen.modulate.a = 1;
 	$GameOver.modulate.a = 0;
 	$GameOver.hide();
 	connect("new_game", $Dropper._on_new_game);
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$DarkScreen.modulate.a -= delta * 0.7;
 	if game_state == "GAMEOVER" and $GameOver.modulate.a < 1:
 		$GameOver.modulate.a += delta;
 	

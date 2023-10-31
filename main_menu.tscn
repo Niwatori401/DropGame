@@ -1,0 +1,177 @@
+[gd_scene load_steps=9 format=3 uid="uid://dgautui580b6x"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_3uuo0"]
+[ext_resource type="Texture2D" uid="uid://c76luyx5ldkts" path="res://art/mainmenu.webp" id="2_cq611"]
+[ext_resource type="Texture2D" uid="uid://v1sualcmsf62" path="res://art/xbutton.png" id="3_xd1ji"]
+[ext_resource type="Texture2D" uid="uid://ifa51bognl5u" path="res://art/menubutton.png" id="4_15o60"]
+[ext_resource type="FontFile" uid="uid://demx0aaebdrhf" path="res://font/cookie/Cookie-Regular.ttf" id="5_7dwut"]
+[ext_resource type="FontFile" uid="uid://bk6sax2jfn10n" path="res://font/grotesque/Grotesque Bourgeoisie.ttf" id="6_xjtpw"]
+
+[sub_resource type="Gradient" id="Gradient_cc2bt"]
+offsets = PackedFloat32Array(0, 0.425806, 0.754839, 0.974194, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s86up"]
+gradient = SubResource("Gradient_cc2bt")
+width = 1801
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_3uuo0")
+
+[node name="MainMenuSelectionScreen" type="Node2D" parent="."]
+
+[node name="BackGround" type="TextureRect" parent="MainMenuSelectionScreen"]
+offset_right = 1792.0
+offset_bottom = 1024.0
+scale = Vector2(0.648153, 0.639121)
+texture = ExtResource("2_cq611")
+
+[node name="ExitButton" type="TextureButton" parent="MainMenuSelectionScreen"]
+offset_left = 1034.0
+offset_top = 41.0
+offset_right = 1290.0
+offset_bottom = 297.0
+scale = Vector2(0.307464, 0.307464)
+texture_normal = ExtResource("3_xd1ji")
+stretch_mode = 0
+
+[node name="MenuOptions" type="Node2D" parent="MainMenuSelectionScreen"]
+position = Vector2(580, 386)
+
+[node name="PlayButton" type="TextureButton" parent="MainMenuSelectionScreen/MenuOptions"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -24.0
+offset_right = 143.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_15o60")
+stretch_mode = 0
+
+[node name="ButtonText" type="RichTextLabel" parent="MainMenuSelectionScreen/MenuOptions/PlayButton"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 9.0
+offset_right = 284.0
+offset_bottom = 63.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_7dwut")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[center]Play[/center]"
+
+[node name="OptionsButton" type="TextureButton" parent="MainMenuSelectionScreen/MenuOptions"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = 36.0
+offset_right = 143.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_15o60")
+stretch_mode = 0
+
+[node name="ButtonText" type="RichTextLabel" parent="MainMenuSelectionScreen/MenuOptions/OptionsButton"]
+offset_left = 4.0
+offset_top = 8.0
+offset_right = 289.0
+offset_bottom = 62.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_7dwut")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[center]Options[/center]"
+
+[node name="LeaderboardButton" type="TextureButton" parent="MainMenuSelectionScreen/MenuOptions"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = 96.0
+offset_right = 143.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_15o60")
+stretch_mode = 0
+
+[node name="ButtonText" type="RichTextLabel" parent="MainMenuSelectionScreen/MenuOptions/LeaderboardButton"]
+offset_left = -1.0
+offset_top = 8.0
+offset_right = 284.0
+offset_bottom = 62.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_7dwut")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[center]Leaderboard[/center]"
+
+[node name="Credits" type="TextureButton" parent="MainMenuSelectionScreen/MenuOptions"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = 156.0
+offset_right = 143.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_15o60")
+stretch_mode = 0
+
+[node name="ButtonText" type="RichTextLabel" parent="MainMenuSelectionScreen/MenuOptions/Credits"]
+offset_left = -1.0
+offset_top = 8.0
+offset_right = 284.0
+offset_bottom = 62.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_7dwut")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[center]Credits[/center]"
+
+[node name="GameTitle" type="RichTextLabel" parent="MainMenuSelectionScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 375.0
+offset_top = 126.0
+offset_right = 775.0
+offset_bottom = 292.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("6_xjtpw")
+theme_override_font_sizes/normal_font_size = 85
+bbcode_enabled = true
+text = "[center]Drop Game[/center]"
+
+[node name="DarkScreen" type="TextureRect" parent="MainMenuSelectionScreen"]
+offset_right = 1801.0
+offset_bottom = 1024.0
+scale = Vector2(0.648153, 0.639121)
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_s86up")
+
+[node name="LeaderboardScreen" type="Node" parent="."]
+
+[connection signal="button_up" from="MainMenuSelectionScreen/ExitButton" to="." method="_on_exit_button_button_up"]
+[connection signal="pressed" from="MainMenuSelectionScreen/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MainMenuSelectionScreen/MenuOptions/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenuSelectionScreen/MenuOptions/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenuSelectionScreen/MenuOptions/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]
+[connection signal="pressed" from="MainMenuSelectionScreen/MenuOptions/Credits" to="." method="_on_credits_pressed"]

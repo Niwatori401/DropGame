@@ -1,0 +1,165 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnq20dyihnrbd"]
+
+[ext_resource type="Script" path="res://leaderboard_screen.gd" id="1_2rgwv"]
+[ext_resource type="Texture2D" uid="uid://c76luyx5ldkts" path="res://art/mainmenu.webp" id="2_pe1lw"]
+[ext_resource type="Texture2D" uid="uid://crbut6lhjj0up" path="res://art/backarrow.png" id="3_emc54"]
+[ext_resource type="Texture2D" uid="uid://cu1qod3n4pvtn" path="res://icon.svg" id="4_c4no6"]
+[ext_resource type="PackedScene" uid="uid://dubkp7pxdfqqn" path="res://score_entry.tscn" id="4_mlsug"]
+
+[sub_resource type="Gradient" id="Gradient_w3qtm"]
+offsets = PackedFloat32Array(0, 0.425806, 0.754839, 0.974194, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fpidl"]
+gradient = SubResource("Gradient_w3qtm")
+width = 1801
+
+[node name="LeaderboardScreen" type="Node2D"]
+script = ExtResource("1_2rgwv")
+
+[node name="BackGround" type="TextureRect" parent="."]
+offset_right = 1792.0
+offset_bottom = 1024.0
+scale = Vector2(0.648153, 0.639121)
+texture = ExtResource("2_pe1lw")
+metadata/_edit_use_anchors_ = true
+
+[node name="BackButton" type="TextureButton" parent="."]
+offset_left = 52.0
+offset_top = 33.0
+offset_right = 308.0
+offset_bottom = 289.0
+scale = Vector2(0.307464, 0.307464)
+texture_normal = ExtResource("3_emc54")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="ScoreBoardContainer" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="ScoreBoardContainer"]
+offset_left = 286.0
+offset_top = 22.0
+offset_right = 414.0
+offset_bottom = 150.0
+scale = Vector2(4.985, 4.985)
+texture = ExtResource("4_c4no6")
+
+[node name="ScoreListContainer" type="Node2D" parent="ScoreBoardContainer"]
+
+[node name="PlayerScoreEntry" parent="ScoreBoardContainer/ScoreListContainer" instance=ExtResource("4_mlsug")]
+
+[node name="PlayerScoreContainer" type="Node2D" parent="ScoreBoardContainer"]
+position = Vector2(0, 15)
+
+[node name="ScoreEntry_0" parent="ScoreBoardContainer/PlayerScoreContainer" instance=ExtResource("4_mlsug")]
+position = Vector2(0, 50)
+
+[node name="ScoreEntry_1" parent="ScoreBoardContainer/PlayerScoreContainer" instance=ExtResource("4_mlsug")]
+position = Vector2(0, 95)
+
+[node name="ScoreEntry_2" parent="ScoreBoardContainer/PlayerScoreContainer" instance=ExtResource("4_mlsug")]
+position = Vector2(0, 140)
+
+[node name="ScoreEntry_3" parent="ScoreBoardContainer/PlayerScoreContainer" instance=ExtResource("4_mlsug")]
+position = Vector2(0, 185)
+
+[node name="ScoreEntry_4" parent="ScoreBoardContainer/PlayerScoreContainer" instance=ExtResource("4_mlsug")]
+position = Vector2(0, 230)
+
+[node name="ScoreEntry_5" parent="ScoreBoardContainer/PlayerScoreContainer" instance=ExtResource("4_mlsug")]
+position = Vector2(0, 275)
+
+[node name="ScoreEntry_6" parent="ScoreBoardContainer/PlayerScoreContainer" instance=ExtResource("4_mlsug")]
+position = Vector2(0, 320)
+
+[node name="ScoreEntry_7" parent="ScoreBoardContainer/PlayerScoreContainer" instance=ExtResource("4_mlsug")]
+position = Vector2(0, 365)
+
+[node name="ScoreEntry_8" parent="ScoreBoardContainer/PlayerScoreContainer" instance=ExtResource("4_mlsug")]
+position = Vector2(0, 410)
+
+[node name="ScoreEntry_9" parent="ScoreBoardContainer/PlayerScoreContainer" instance=ExtResource("4_mlsug")]
+position = Vector2(0, 455)
+
+[node name="NextButton" type="TextureButton" parent="."]
+offset_left = 1049.0
+offset_top = 485.0
+offset_right = 1177.0
+offset_bottom = 613.0
+scale = Vector2(0.7, 0.5)
+texture_normal = ExtResource("4_c4no6")
+
+[node name="ButtonText" type="RichTextLabel" parent="NextButton"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 116.0
+offset_bottom = 136.0
+theme_override_font_sizes/normal_font_size = 39
+bbcode_enabled = true
+text = "[center]Next[/center]"
+
+[node name="PreviousButton" type="TextureButton" parent="."]
+offset_left = 941.0
+offset_top = 486.0
+offset_right = 1069.0
+offset_bottom = 614.0
+scale = Vector2(0.7, 0.5)
+texture_normal = ExtResource("4_c4no6")
+
+[node name="ButtonText" type="RichTextLabel" parent="PreviousButton"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 116.0
+offset_bottom = 136.0
+theme_override_font_sizes/normal_font_size = 39
+bbcode_enabled = true
+text = "[center]Prev[/center]"
+
+[node name="FirstButton" type="TextureButton" parent="."]
+offset_left = 941.0
+offset_top = 562.0
+offset_right = 1069.0
+offset_bottom = 690.0
+scale = Vector2(0.7, 0.5)
+texture_normal = ExtResource("4_c4no6")
+
+[node name="ButtonText" type="RichTextLabel" parent="FirstButton"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 116.0
+offset_bottom = 136.0
+theme_override_font_sizes/normal_font_size = 39
+bbcode_enabled = true
+text = "[center]First[/center]"
+
+[node name="LastButton" type="TextureButton" parent="."]
+offset_left = 1047.0
+offset_top = 563.0
+offset_right = 1175.0
+offset_bottom = 691.0
+scale = Vector2(0.7, 0.5)
+texture_normal = ExtResource("4_c4no6")
+
+[node name="ButtonText" type="RichTextLabel" parent="LastButton"]
+layout_mode = 0
+offset_left = 20.0001
+offset_top = 36.0
+offset_right = 120.0
+offset_bottom = 136.0
+theme_override_font_sizes/normal_font_size = 39
+bbcode_enabled = true
+text = "[center]Last[/center]"
+
+[node name="DarkScreen" type="TextureRect" parent="."]
+visible = false
+offset_right = 1801.0
+offset_bottom = 1024.0
+scale = Vector2(0.648153, 0.639121)
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_fpidl")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
