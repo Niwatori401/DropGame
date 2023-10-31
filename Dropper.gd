@@ -4,6 +4,7 @@ const move_speed = 800
 @export var ball_scene : PackedScene
 @onready var score_counter = get_tree().get_nodes_in_group("score")[0]
 @onready var mainnode = get_tree().get_nodes_in_group("main")[0]
+@onready var character_sprite = get_tree().get_nodes_in_group("character")[0]
 
 const ball_sprite_scale_for_next = 0.18;
 const ball_sprite_scale_for_next_next = 0.14;
@@ -62,7 +63,9 @@ func spawn_falling_ball():
 	newball.ball_type = self.current_ball_index
 	newball.get_node("Hitbox/Sprite").play(str(newball.ball_type))
 	newball.update_scale()
+	newball.connect("popped", character_sprite._on_ball_popped)
 	newball.connect("popped", score_counter._on_ball_popped)
+	newball.connect("game_over", character_sprite._on_game_over)
 	newball.connect("game_over", mainnode._on_game_over)
 	newball.connect("game_over", self._on_game_over)
 	

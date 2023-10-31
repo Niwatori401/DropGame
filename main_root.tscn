@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cpe33er6bhw26"]
+[gd_scene load_steps=15 format=3 uid="uid://cpe33er6bhw26"]
 
 [ext_resource type="Script" path="res://main_root.gd" id="1_0ih8u"]
 [ext_resource type="Texture2D" uid="uid://drkbfgixngr0p" path="res://art/background.png" id="1_hjl2a"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://0xqouh58ade0" path="res://audio/Canon in D for Two Harps.mp3" id="8_e5vxy"]
 [ext_resource type="Texture2D" uid="uid://jfutcl4fr7k7" path="res://art/boxtop.png" id="8_rmwwa"]
 [ext_resource type="Texture2D" uid="uid://cdyxv2tf6ciwf" path="res://art/gameover.png" id="11_jfll4"]
+[ext_resource type="PackedScene" uid="uid://d1js2a1wpyyix" path="res://character.tscn" id="13_uqmw8"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_36y18"]
 a = Vector2(-2, 0)
@@ -108,3 +109,8 @@ offset_right = 211.345
 offset_bottom = -12.825
 theme_override_font_sizes/font_size = 56
 text = "Press R to restart"
+
+[node name="Character" parent="." instance=ExtResource("13_uqmw8")]
+position = Vector2(193, 384)
+scale = Vector2(0.416371, 0.685615)
+animation = &"0"

@@ -17,6 +17,7 @@ var teleport_location : Vector2 = Vector2.ZERO
 
 var time_since_thud : float = 0;
 var time_between_thuds : float = 0.5;
+var time_to_thudless : float = 0;
 var time_until_thudless : float = 6;
 
 func _ready():
@@ -60,9 +61,10 @@ func _integrate_forces(state):
 		should_teleport = false
 
 func _on_body_entered(body):
-	if time_since_thud > time_between_thuds and time_since_thud < time_until_thudless:
+	if time_since_thud > time_between_thuds and time_to_thudless < time_until_thudless:
 		$Thud.set_pitch_scale(self.ball_pitches[self.ball_type - 1]);
 		$Thud.play();
+		time_to_thudless += time_since_thud;
 		time_since_thud = 0;
 		
 	if body.is_in_group("FailLine"):

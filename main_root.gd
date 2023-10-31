@@ -10,6 +10,8 @@ func _ready():
 	$GameOver.modulate.a = 0;
 	$GameOver.hide();
 	connect("new_game", $Dropper._on_new_game);
+	connect("new_game", $Character._on_new_game);
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if game_state == "GAMEOVER" and $GameOver.modulate.a < 1:
