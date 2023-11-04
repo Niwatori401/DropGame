@@ -10,3 +10,5 @@ script = ExtResource("1_ojkwp")
 [node name="HTTPGetCurrentUser" type="HTTPRequest" parent="."]
 
 [node name="HTTPPostScore" type="HTTPRequest" parent="."]
+
+[node name="HTTPGetUserCount" type="HTTPRequest" parent="."]

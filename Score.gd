@@ -6,6 +6,8 @@ var score = 0
 func _ready():
 	self.text = "Score: " + str(score);
 
+func get_score():
+	return self.score;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

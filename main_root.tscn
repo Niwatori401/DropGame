@@ -110,13 +110,21 @@ position = Vector2(620, 394)
 scale = Vector2(0.744097, 0.744097)
 texture = ExtResource("11_jfll4")
 
-[node name="Label" type="Label" parent="GameOver"]
+[node name="RestartInstructionsLabel" type="Label" parent="GameOver"]
 offset_left = -252.655
 offset_top = -104.825
 offset_right = 211.345
 offset_bottom = -12.825
 theme_override_font_sizes/font_size = 56
 text = "Press R to restart"
+
+[node name="ScoreStatusLabel" type="RichTextLabel" parent="GameOver"]
+offset_left = -252.655
+offset_top = 8.06342
+offset_right = 211.345
+offset_bottom = 90.0634
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
 
 [node name="Character" parent="." instance=ExtResource("13_uqmw8")]
 position = Vector2(193, 384)
@@ -131,3 +139,5 @@ scale = Vector2(0.648153, 0.639121)
 mouse_filter = 2
 texture = SubResource("GradientTexture1D_vh8or")
 metadata/_edit_use_anchors_ = true
+
+[node name="HTTPScoreSubmit" type="HTTPRequest" parent="."]

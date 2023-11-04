@@ -7,16 +7,21 @@ var should_fade_out = false;
 # RUNNING GAMEOVER
 var game_state : String = "RUNNING";
 
-# Called when the node enters the scene tree for the first time.
+var config = ConfigFile.new();
+var base_url = "http://localhost:8080"
+
+#Prevents submitting the score multiple times due to the ball bouncing on the end line
+var submitted_score = false;
 func _ready():
 	$DarkScreen.show();
 	$DarkScreen.modulate.a = 1;
 	$GameOver.modulate.a = 0;
 	$GameOver.hide();
+	config.load("user://config.cfg");
 	connect("new_game", $Dropper._on_new_game);
 	connect("new_game", $Character._on_new_game);
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
 	
 	if should_fade_out:
@@ -44,6 +49,7 @@ func restart_game():
 	$BGM.stop();
 	$BGM.play();
 	emit_signal("new_game")
+	submitted_score = false;
 
 	var nodes_in_group = get_tree().get_nodes_in_group("ball")
 	for node in nodes_in_group:
@@ -54,4 +60,19 @@ func restart_game():
 
 func _on_game_over():
 	$GameOver.show();
+	if (config.get_value("account", "useAccount") and !submitted_score):
+		submitted_score = true;
+		post_new_score_for_user($Score/ScoreLabel.get_score());
+		
 	self.game_state = "GAMEOVER";
+
+func post_new_score_for_user(score: int):
+	$HTTPScoreSubmit.request_completed.connect(self.on_score_submitted)
+	$GameOver/ScoreStatusLabel.set_text("[center][color=darkyellow]Submitting score...[/color][/center]");
+	var json = '{"passhash":"%s", "userId": {"userName":"%s"}, "score":%d}' % [config.get_value("account", "password").hash(), config.get_value("account", "username"), score];
+	var headers = ["Content-Type: application/json"]
+	var url = "%s/score/newScore" % base_url
+	$HTTPScoreSubmit.request(url, headers, HTTPClient.METHOD_POST, json)
+
+func on_score_submitted(result, response_code, headers, body):
+	$GameOver/ScoreStatusLabel.set_text("[center][color=darkgreen]Score submitted[/color][/center]");

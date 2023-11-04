@@ -81,6 +81,7 @@ texture_normal = ExtResource("4_15o60")
 stretch_mode = 0
 
 [node name="ButtonText" type="RichTextLabel" parent="MainMenuSelectionScreen/MenuOptions/OptionsButton"]
+layout_mode = 0
 offset_left = 4.0
 offset_top = 8.0
 offset_right = 289.0
@@ -107,6 +108,7 @@ texture_normal = ExtResource("4_15o60")
 stretch_mode = 0
 
 [node name="ButtonText" type="RichTextLabel" parent="MainMenuSelectionScreen/MenuOptions/LeaderboardButton"]
+layout_mode = 0
 offset_left = -1.0
 offset_top = 8.0
 offset_right = 284.0
@@ -133,6 +135,7 @@ texture_normal = ExtResource("4_15o60")
 stretch_mode = 0
 
 [node name="ButtonText" type="RichTextLabel" parent="MainMenuSelectionScreen/MenuOptions/Credits"]
+layout_mode = 0
 offset_left = -1.0
 offset_top = 8.0
 offset_right = 284.0
@@ -142,6 +145,34 @@ theme_override_fonts/normal_font = ExtResource("5_7dwut")
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "[center]Credits[/center]"
+
+[node name="Logout" type="TextureButton" parent="MainMenuSelectionScreen/MenuOptions"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 357.0
+offset_top = 210.0
+offset_right = 642.0
+offset_bottom = 264.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.70874, 0.70874)
+texture_normal = ExtResource("4_15o60")
+stretch_mode = 0
+
+[node name="ButtonText" type="RichTextLabel" parent="MainMenuSelectionScreen/MenuOptions/Logout"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 8.0
+offset_right = 284.0
+offset_bottom = 62.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_7dwut")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[center]Logout[/center]"
 
 [node name="GameTitle" type="RichTextLabel" parent="MainMenuSelectionScreen"]
 anchors_preset = 8
@@ -161,6 +192,7 @@ bbcode_enabled = true
 text = "[center]Drop Game[/center]"
 
 [node name="DarkScreen" type="TextureRect" parent="MainMenuSelectionScreen"]
+visible = false
 offset_right = 1801.0
 offset_bottom = 1024.0
 scale = Vector2(0.648153, 0.639121)
@@ -175,3 +207,4 @@ texture = SubResource("GradientTexture1D_s86up")
 [connection signal="pressed" from="MainMenuSelectionScreen/MenuOptions/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MainMenuSelectionScreen/MenuOptions/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]
 [connection signal="pressed" from="MainMenuSelectionScreen/MenuOptions/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MainMenuSelectionScreen/MenuOptions/Logout" to="." method="_on_logout_pressed"]
