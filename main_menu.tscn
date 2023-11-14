@@ -1,11 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgautui580b6x"]
+[gd_scene load_steps=15 format=3 uid="uid://dgautui580b6x"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_3uuo0"]
-[ext_resource type="Texture2D" uid="uid://c76luyx5ldkts" path="res://art/mainmenu.webp" id="2_cq611"]
+[ext_resource type="Texture2D" uid="uid://cjgqndr56bkmk" path="res://art/menu_bg_0.png" id="2_xmvy1"]
+[ext_resource type="Texture2D" uid="uid://l0khv5mevpai" path="res://art/menu_bg_1.png" id="3_nwt03"]
 [ext_resource type="Texture2D" uid="uid://v1sualcmsf62" path="res://art/xbutton.png" id="3_xd1ji"]
 [ext_resource type="Texture2D" uid="uid://ifa51bognl5u" path="res://art/menubutton.png" id="4_15o60"]
+[ext_resource type="Texture2D" uid="uid://c7ubfifad07vs" path="res://art/menu_bg_2.png" id="4_v1a5p"]
 [ext_resource type="FontFile" uid="uid://demx0aaebdrhf" path="res://font/cookie/Cookie-Regular.ttf" id="5_7dwut"]
-[ext_resource type="FontFile" uid="uid://bk6sax2jfn10n" path="res://font/grotesque/Grotesque Bourgeoisie.ttf" id="6_xjtpw"]
+[ext_resource type="FontFile" uid="uid://e2hvpt36yn1p" path="res://font/big_bottom_cartoon/Big Bottom Cartoon.ttf" id="8_u0njc"]
+[ext_resource type="Texture2D" uid="uid://cbqmp7al4ytfv" path="res://art/ball1.png" id="9_pj15p"]
+[ext_resource type="Texture2D" uid="uid://c1ur2ovwbcrje" path="res://art/ball3.png" id="10_lublq"]
+[ext_resource type="Texture2D" uid="uid://dywncqvu0afyp" path="res://art/ball8.png" id="11_nv65f"]
+[ext_resource type="Texture2D" uid="uid://dnsdqsufmscdf" path="res://art/ball4.png" id="12_tbqn3"]
 
 [sub_resource type="Gradient" id="Gradient_cc2bt"]
 offsets = PackedFloat32Array(0, 0.425806, 0.754839, 0.974194, 1)
@@ -15,16 +21,52 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 
 gradient = SubResource("Gradient_cc2bt")
 width = 1801
 
-[node name="MainMenu" type="Node"]
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_3uuo0")
 
-[node name="MainMenuSelectionScreen" type="Node2D" parent="."]
+[node name="MainMenuSelectionScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 
-[node name="BackGround" type="TextureRect" parent="MainMenuSelectionScreen"]
-offset_right = 1792.0
-offset_bottom = 1024.0
-scale = Vector2(0.648153, 0.639121)
-texture = ExtResource("2_cq611")
+[node name="Background_Rear" type="TextureRect" parent="MainMenuSelectionScreen"]
+layout_mode = 0
+offset_left = -86.0
+offset_top = -76.0
+offset_right = 3914.0
+offset_bottom = 3924.0
+scale = Vector2(0.337125, 0.207)
+texture = ExtResource("2_xmvy1")
+
+[node name="Background_1" type="TextureRect" parent="MainMenuSelectionScreen"]
+layout_mode = 0
+offset_left = -1989.0
+offset_top = -1988.0
+offset_right = 2011.0
+offset_bottom = 2012.0
+scale = Vector2(0.869, 0.869)
+pivot_offset = Vector2(2000, 2000)
+texture = ExtResource("3_nwt03")
+
+[node name="Background_2" type="TextureRect" parent="MainMenuSelectionScreen"]
+layout_mode = 0
+offset_left = -1993.0
+offset_top = -1996.0
+offset_right = 2007.0
+offset_bottom = 2004.0
+rotation = -2.75238
+scale = Vector2(0.869, 0.869)
+pivot_offset = Vector2(2000, 2000)
+texture = ExtResource("4_v1a5p")
+
+[node name="ColorRect" type="ColorRect" parent="MainMenuSelectionScreen"]
+layout_mode = 0
+offset_left = -51.0
+offset_top = 610.0
+offset_right = 1186.0
+offset_bottom = 699.0
+color = Color(1, 0.847059, 1, 1)
 
 [node name="ExitButton" type="TextureButton" parent="MainMenuSelectionScreen"]
 offset_left = 1034.0
@@ -35,10 +77,15 @@ scale = Vector2(0.307464, 0.307464)
 texture_normal = ExtResource("3_xd1ji")
 stretch_mode = 0
 
-[node name="MenuOptions" type="Node2D" parent="MainMenuSelectionScreen"]
-position = Vector2(580, 386)
+[node name="MenuOptions" type="Control" parent="MainMenuSelectionScreen"]
+anchors_preset = 0
+offset_left = 580.0
+offset_top = 386.0
+offset_right = 580.0
+offset_bottom = 386.0
 
 [node name="PlayButton" type="TextureButton" parent="MainMenuSelectionScreen/MenuOptions"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -60,12 +107,15 @@ offset_top = 9.0
 offset_right = 284.0
 offset_bottom = 63.0
 mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
 theme_override_fonts/normal_font = ExtResource("5_7dwut")
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "[center]Play[/center]"
 
 [node name="OptionsButton" type="TextureButton" parent="MainMenuSelectionScreen/MenuOptions"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -81,6 +131,7 @@ texture_normal = ExtResource("4_15o60")
 stretch_mode = 0
 
 [node name="ButtonText" type="RichTextLabel" parent="MainMenuSelectionScreen/MenuOptions/OptionsButton"]
+layout_mode = 0
 offset_left = 4.0
 offset_top = 8.0
 offset_right = 289.0
@@ -92,6 +143,7 @@ bbcode_enabled = true
 text = "[center]Options[/center]"
 
 [node name="LeaderboardButton" type="TextureButton" parent="MainMenuSelectionScreen/MenuOptions"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -107,6 +159,7 @@ texture_normal = ExtResource("4_15o60")
 stretch_mode = 0
 
 [node name="ButtonText" type="RichTextLabel" parent="MainMenuSelectionScreen/MenuOptions/LeaderboardButton"]
+layout_mode = 0
 offset_left = -1.0
 offset_top = 8.0
 offset_right = 284.0
@@ -118,6 +171,7 @@ bbcode_enabled = true
 text = "[center]Leaderboard[/center]"
 
 [node name="Credits" type="TextureButton" parent="MainMenuSelectionScreen/MenuOptions"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -133,6 +187,7 @@ texture_normal = ExtResource("4_15o60")
 stretch_mode = 0
 
 [node name="ButtonText" type="RichTextLabel" parent="MainMenuSelectionScreen/MenuOptions/Credits"]
+layout_mode = 0
 offset_left = -1.0
 offset_top = 8.0
 offset_right = 284.0
@@ -144,32 +199,80 @@ bbcode_enabled = true
 text = "[center]Credits[/center]"
 
 [node name="GameTitle" type="RichTextLabel" parent="MainMenuSelectionScreen"]
-anchors_preset = 8
+layout_mode = 1
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 375.0
-offset_top = 126.0
-offset_right = 775.0
-offset_bottom = 292.0
+offset_left = 217.0
+offset_top = 125.0
+offset_right = 955.0
+offset_bottom = 350.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("6_xjtpw")
-theme_override_font_sizes/normal_font_size = 85
+pivot_offset = Vector2(368, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = ExtResource("8_u0njc")
+theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[center]Drop Game[/center]"
 
+[node name="FoodItems" type="Control" parent="MainMenuSelectionScreen"]
+anchors_preset = 0
+offset_left = 118.0
+offset_top = 410.0
+offset_right = 327.0
+offset_bottom = 619.0
+
+[node name="Food_1" type="TextureRect" parent="MainMenuSelectionScreen/FoodItems"]
+layout_mode = 0
+offset_left = 812.0
+offset_top = 32.0001
+offset_right = 1068.0
+offset_bottom = 288.0
+scale = Vector2(0.525, 0.525)
+pivot_offset = Vector2(128, 128)
+texture = ExtResource("9_pj15p")
+
+[node name="Food_2" type="TextureRect" parent="MainMenuSelectionScreen/FoodItems"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 51.0
+offset_right = 342.0
+offset_bottom = 307.0
+scale = Vector2(0.525, 0.525)
+pivot_offset = Vector2(128, 128)
+texture = ExtResource("10_lublq")
+flip_h = true
+
+[node name="Food_3" type="TextureRect" parent="MainMenuSelectionScreen/FoodItems"]
+layout_mode = 0
+offset_left = 659.0
+offset_top = 32.0
+offset_right = 915.0
+offset_bottom = 288.0
+scale = Vector2(0.525, 0.525)
+pivot_offset = Vector2(128, 128)
+texture = ExtResource("11_nv65f")
+
+[node name="Food_4" type="TextureRect" parent="MainMenuSelectionScreen/FoodItems"]
+layout_mode = 0
+offset_left = -587.0
+offset_top = 14.0
+offset_right = -331.0
+offset_bottom = 270.0
+scale = Vector2(0.525, 0.525)
+pivot_offset = Vector2(128, 128)
+texture = ExtResource("12_tbqn3")
+flip_h = true
+
 [node name="DarkScreen" type="TextureRect" parent="MainMenuSelectionScreen"]
+visible = false
 offset_right = 1801.0
 offset_bottom = 1024.0
 scale = Vector2(0.648153, 0.639121)
 mouse_filter = 2
 texture = SubResource("GradientTexture1D_s86up")
 
-[node name="LeaderboardScreen" type="Node" parent="."]
-
-[connection signal="button_up" from="MainMenuSelectionScreen/ExitButton" to="." method="_on_exit_button_button_up"]
 [connection signal="pressed" from="MainMenuSelectionScreen/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="MainMenuSelectionScreen/MenuOptions/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenuSelectionScreen/MenuOptions/OptionsButton" to="." method="_on_options_button_pressed"]
