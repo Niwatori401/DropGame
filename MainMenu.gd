@@ -2,6 +2,7 @@ extends Node
 
 var should_fade_out = false;
 
+
 var title_growing = true;
 var MINIMUM_TITLE_SIZE = 0.98;
 var MAXIMUM_TITLE_SIZE = 1.02;
@@ -9,13 +10,16 @@ var current_title_size = 1;
 var TITLE_GROWTH_RATE = 0.01;
 
 
-# Called when the node enters the scene tree for the first time.
+var config = ConfigFile.new();
+
+
 func _ready():
 	$MainMenuSelectionScreen/DarkScreen.show();
 	$MainMenuSelectionScreen/DarkScreen.modulate.a = 1;
+	config.load("user://config.cfg");
+	if !config.get_value("account", "useAccount"):
+		$MainMenuSelectionScreen/MenuOptions/LeaderboardButton.hide();
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$MainMenuSelectionScreen/Background_1.rotation += delta * 0.1
 	$MainMenuSelectionScreen/Background_2.rotation -= delta * 0.2
@@ -35,9 +39,9 @@ func _process(delta):
 		if $MainMenuSelectionScreen/DarkScreen.modulate.a < 0:
 			$MainMenuSelectionScreen/DarkScreen.modulate.a = 0;
 		
-		$MainMenuSelectionScreen/DarkScreen.modulate.a += delta * 0.7;
+		$MainMenuSelectionScreen/DarkScreen.modulate.a += delta * 1.5;
 	else:
-		$MainMenuSelectionScreen/DarkScreen.modulate.a -= delta * 0.7;
+		$MainMenuSelectionScreen/DarkScreen.modulate.a -= delta * 1.5;
 
 func _on_exit_button_pressed():
 	get_tree().quit()
@@ -45,20 +49,29 @@ func _on_exit_button_pressed():
 
 func _on_play_button_pressed():
 	should_fade_out = true;
-	get_tree().create_timer(2).timeout.connect(func(): get_tree().change_scene_to_file("res://main_root.tscn"))
+	get_tree().create_timer(1).timeout.connect(func(): get_tree().change_scene_to_file("res://main_root.tscn"))
 	
 
 
 func _on_options_button_pressed():
 	should_fade_out = true;
-	get_tree().create_timer(2).timeout.connect(func(): get_tree().change_scene_to_file("res://options_menu.tscn"))
+	get_tree().create_timer(1).timeout.connect(func(): get_tree().change_scene_to_file("res://options_menu.tscn"))
 
 
 func _on_leaderboard_button_pressed():
 	should_fade_out = true;
-	get_tree().create_timer(2).timeout.connect(func(): get_tree().change_scene_to_file("res://leaderboard_screen.tscn"))
+	get_tree().create_timer(1).timeout.connect(func(): get_tree().change_scene_to_file("res://leaderboard_screen.tscn"))
 
 
 func _on_credits_pressed():
 	should_fade_out = true;
-	get_tree().create_timer(2).timeout.connect(func(): get_tree().change_scene_to_file("res://credits_menu.tscn"))
+	get_tree().create_timer(1).timeout.connect(func(): get_tree().change_scene_to_file("res://credits_menu.tscn"))
+
+
+func _on_logout_pressed():
+	config.erase_section_key("account", "useAccount");
+	config.erase_section_key("account", "username");
+	config.erase_section_key("account", "password");
+	config.save("user://config.cfg");
+	should_fade_out = true;
+	get_tree().create_timer(1).timeout.connect(func(): get_tree().change_scene_to_file("res://user_entry.tscn"));

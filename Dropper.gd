@@ -11,6 +11,8 @@ const ball_sprite_scale_for_next_next = 0.14;
 var can_drop = true;
 var can_move = true;
 
+var debug = true;
+
 var current_ball_index : int
 var next_ball_index : int
 var next_next_ball_index : int
@@ -42,9 +44,9 @@ func _process(delta):
 		spawn_falling_ball();
 		
 	
-	if position_offset < (-self.rail_length / 2 + ball_sprite_size[0] / 2)  / global_scale[0]:
+	if !debug and position_offset < (-self.rail_length / 2 + ball_sprite_size[0] / 2)  / global_scale[0]:
 		position_offset = (-self.rail_length / 2 + ball_sprite_size[0] / 2) / global_scale[0]
-	if position_offset > (self.rail_length / 2 - ball_sprite_size[0] / 2) / global_scale[0]:
+	if !debug and position_offset > (self.rail_length / 2 - ball_sprite_size[0] / 2) / global_scale[0]:
 		position_offset = (self.rail_length / 2 - ball_sprite_size[0] / 2)  / global_scale[0]
 	
 	$DropperHead.transform.origin[0] = position_offset
