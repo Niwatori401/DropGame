@@ -32,7 +32,25 @@ scale = Vector2(0.648153, 0.639121)
 texture = ExtResource("2_nic3x")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="CreditsScreen"]
+[node name="BackButton" type="TextureButton" parent="CreditsScreen"]
+offset_left = 52.0
+offset_top = 33.0
+offset_right = 308.0
+offset_bottom = 289.0
+scale = Vector2(0.307464, 0.307464)
+texture_normal = ExtResource("3_ewydw")
+stretch_mode = 0
+
+[node name="CreditsBox" type="Control" parent="CreditsScreen"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -55.0
+offset_right = 40.0
+offset_bottom = -15.0
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CreditsScreen/CreditsBox"]
+layout_mode = 0
 offset_left = 224.0
 offset_top = 117.0
 offset_right = 480.0
@@ -40,7 +58,8 @@ offset_bottom = 157.0
 scale = Vector2(2.66548, 12.9371)
 texture = SubResource("GradientTexture1D_k72di")
 
-[node name="CreditsTitleText" type="RichTextLabel" parent="CreditsScreen"]
+[node name="CreditsTitleText" type="RichTextLabel" parent="CreditsScreen/CreditsBox"]
+layout_mode = 0
 offset_left = 384.0
 offset_top = 148.0
 offset_right = 784.0
@@ -50,17 +69,19 @@ theme_override_font_sizes/normal_font_size = 66
 bbcode_enabled = true
 text = "[center]CREDITS[/center]"
 
-[node name="CreditsNames" type="RichTextLabel" parent="CreditsScreen"]
+[node name="CreditsNames" type="RichTextLabel" parent="CreditsScreen/CreditsBox"]
+layout_mode = 0
 offset_left = 274.0
 offset_top = 240.0
 offset_right = 874.0
 offset_bottom = 440.0
 theme_override_fonts/normal_font = ExtResource("4_2mgvv")
 theme_override_font_sizes/normal_font_size = 50
-text = "Programming ------------- Niwatori401
-Character Art --------------------Bloopy"
+text = "Programming ----------- Niwatori401
+Character Art ------------------Bloopy"
 
-[node name="OtherAcknowledgements" type="RichTextLabel" parent="CreditsScreen"]
+[node name="OtherAcknowledgements" type="RichTextLabel" parent="CreditsScreen/CreditsBox"]
+layout_mode = 0
 offset_left = 226.0
 offset_top = 553.0
 offset_right = 1026.0
@@ -70,18 +91,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "\"Canon in D for Two Harps\" by Kevin MacLeod (incompetech.com)
 Other art/sound assets from public domain sources"
 
-[node name="BackButton" type="TextureButton" parent="CreditsScreen"]
-offset_left = 52.0
-offset_top = 33.0
-offset_right = 308.0
-offset_bottom = 289.0
-scale = Vector2(0.307464, 0.307464)
-texture_normal = ExtResource("3_ewydw")
-stretch_mode = 0
-metadata/_edit_use_anchors_ = true
-
 [node name="DarkScreen" type="TextureRect" parent="CreditsScreen"]
-visible = false
 offset_right = 1801.0
 offset_bottom = 1024.0
 scale = Vector2(0.648153, 0.639121)

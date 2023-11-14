@@ -39,3 +39,5 @@ func _on_sfx_slider_value_changed(value):
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), lerp(-30, 15, value / 100));
 
 
+func _on_sfx_slider_drag_ended(value_changed):
+	$OptionsScreen/SFXVolumeSlider/SFXTestSound.play()

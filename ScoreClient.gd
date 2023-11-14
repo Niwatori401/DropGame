@@ -58,12 +58,15 @@ func _on_previous_button_pressed():
 
 
 func _on_get_current_user_request_completed(result, response_code, headers, body):
+	if (result != OK):
+		return;
+		
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	
 	var score_instance = score_entry_template.instantiate();
 	score_instance.get_node("ScoreLabel").set_text(str(json["topScore"]));
 	score_instance.get_node("PlayerNameLabel").set_text(json["namePassHash"]["userName"]);
-	score_instance.get_node("RankingLabel").set_text(str(json["rank"]));
+	score_instance.get_node("RankingLabel").set_text("#" + str(json["rank"]));
 	personal_score_container.add_child(score_instance);
 
 
@@ -80,7 +83,7 @@ func _on_get_score_board_request_completed(result, response_code, headers, body)
 		var score_instance = score_entry_template.instantiate();
 		score_instance.get_node("ScoreLabel").set_text(str(j["topScore"]));
 		score_instance.get_node("PlayerNameLabel").set_text(j["namePassHash"]["userName"]);
-		score_instance.get_node("RankingLabel").set_text(str(j["rank"]));
+		score_instance.get_node("RankingLabel").set_text("#" + str(j["rank"]));
 		score_instance.translate(Vector2(0, i * y_offset + y_init_offset));
 		score_board_container.add_child(score_instance);
 		

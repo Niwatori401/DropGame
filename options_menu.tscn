@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://options_menu.gd" id="1_qt41n"]
 [ext_resource type="Texture2D" uid="uid://crbut6lhjj0up" path="res://art/backarrow.png" id="2_5q7fv"]
 [ext_resource type="Texture2D" uid="uid://ifa51bognl5u" path="res://art/menubutton.png" id="3_dunyf"]
-[ext_resource type="AudioStream" uid="uid://0xqouh58ade0" path="res://audio/Canon in D for Two Harps.mp3" id="5_568a5"]
+[ext_resource type="AudioStream" uid="uid://cxu67pbsv5cnv" path="res://audio/pop.ogg" id="4_fgcxg"]
 
 [sub_resource type="Gradient" id="Gradient_hf1ml"]
 offsets = PackedFloat32Array(0, 0.425806, 0.754839, 0.974194, 1)
@@ -50,7 +50,7 @@ offset_left = -124.0
 offset_top = 4.0
 offset_right = 124.51
 offset_bottom = 20.0
-value = 75.0
+value = 40.0
 
 [node name="OptionName" type="RichTextLabel" parent="OptionsScreen/MusicVolumeSlider"]
 anchors_preset = 8
@@ -101,6 +101,10 @@ mouse_filter = 2
 bbcode_enabled = true
 text = "[center]SFX Volume[/center]"
 
+[node name="SFXTestSound" type="AudioStreamPlayer" parent="OptionsScreen/SFXVolumeSlider"]
+stream = ExtResource("4_fgcxg")
+bus = &"SFX"
+
 [node name="DarkScreen" type="TextureRect" parent="OptionsScreen"]
 visible = false
 offset_right = 1801.0
@@ -110,12 +114,7 @@ mouse_filter = 2
 texture = SubResource("GradientTexture1D_xq1rk")
 metadata/_edit_use_anchors_ = true
 
-[node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_568a5")
-volume_db = -8.303
-autoplay = true
-bus = &"Music"
-
 [connection signal="pressed" from="OptionsScreen/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="value_changed" from="OptionsScreen/MusicVolumeSlider/Slider" to="." method="_on_music_slider_value_changed"]
+[connection signal="drag_ended" from="OptionsScreen/SFXVolumeSlider/Slider" to="." method="_on_sfx_slider_drag_ended"]
 [connection signal="value_changed" from="OptionsScreen/SFXVolumeSlider/Slider" to="." method="_on_sfx_slider_value_changed"]

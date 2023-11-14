@@ -6,7 +6,6 @@ signal game_over
 @export var max_ball_type : int = 8
 @export var base_scale : float = 4.675
 
-
 var ball_sizes = [0.4, 0.6, .8, 1.0, 1.2, 1.4, 1.6, 1.0]
 var ball_masses = [0.6, 0.75, .9, 1.1, 1.3, 1.5, 2.0, 2.5]
 var ball_pitches = [1, 0.8, 0.7, 0.6, 0.5, 0.4, 0.25, 0.1]

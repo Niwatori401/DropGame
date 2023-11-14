@@ -7,13 +7,20 @@ var title_growing = true;
 var MINIMUM_TITLE_SIZE = 0.98;
 var MAXIMUM_TITLE_SIZE = 1.02;
 var current_title_size = 1;
-var TITLE_GROWTH_RATE = 0.01;
+var TITLE_GROWTH_RATE = 0.02;
 
 
 var config = ConfigFile.new();
 
 
 func _ready():
+	if !get_node("/root/Globals").started_main_menu_music:
+		get_node("/root/Globals").started_main_menu_music = true;
+		get_node("/root/Globals/BGM").play();
+	if !get_node("/root/Globals").one_time_music_volume_adjusted:
+		get_node("/root/Globals").one_time_music_volume_adjusted = true;
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), -12);
+		
 	$MainMenuSelectionScreen/DarkScreen.show();
 	$MainMenuSelectionScreen/DarkScreen.modulate.a = 1;
 	config.load("user://config.cfg");
@@ -49,7 +56,11 @@ func _on_exit_button_pressed():
 
 func _on_play_button_pressed():
 	should_fade_out = true;
-	get_tree().create_timer(1).timeout.connect(func(): get_tree().change_scene_to_file("res://main_root.tscn"))
+	get_tree().create_timer(1).timeout.connect(func(): 
+		get_tree().change_scene_to_file("res://main_root.tscn"); 
+		get_node("/root/Globals/BGM").stop();
+		get_node("/root/Globals").started_main_menu_music = false;
+		)
 	
 
 

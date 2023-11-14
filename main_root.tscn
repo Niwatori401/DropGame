@@ -80,6 +80,7 @@ texture = ExtResource("8_rmwwa")
 stream = ExtResource("8_e5vxy")
 volume_db = -8.303
 autoplay = true
+bus = &"Music"
 
 [node name="FailLine" type="Node" parent="."]
 

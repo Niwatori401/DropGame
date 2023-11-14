@@ -41,6 +41,9 @@ func _on_skip_button_pressed():
 	config.save("user://config.cfg");
 
 func on_submit_request_complete(result, response_code, headers, body):
+	if (result != OK):
+		return;
+		
 	var json = JSON.parse_string(body.get_string_from_utf8());
 	var nameOk = json["nameOk"];
 	var passOk = json["passOk"];
