@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://0xqouh58ade0" path="res://audio/Canon in D for Two Harps.mp3" id="8_e5vxy"]
 [ext_resource type="Texture2D" uid="uid://jfutcl4fr7k7" path="res://art/boxtop.png" id="8_rmwwa"]
 [ext_resource type="Texture2D" uid="uid://cdyxv2tf6ciwf" path="res://art/gameover.png" id="11_jfll4"]
-[ext_resource type="PackedScene" uid="uid://d1js2a1wpyyix" path="res://character.tscn" id="13_uqmw8"]
+[ext_resource type="PackedScene" path="res://character.tscn" id="13_uqmw8"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_36y18"]
 a = Vector2(-2, 0)
@@ -128,6 +128,7 @@ theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 
 [node name="Character" parent="." instance=ExtResource("13_uqmw8")]
+visible = false
 position = Vector2(193, 384)
 scale = Vector2(0.416371, 0.685615)
 animation = &"0"

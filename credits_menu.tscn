@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqy30f0n0l5in"]
+[gd_scene load_steps=11 format=3 uid="uid://cqy30f0n0l5in"]
 
 [ext_resource type="Script" path="res://credits_menu.gd" id="1_6tujf"]
-[ext_resource type="Texture2D" uid="uid://c76luyx5ldkts" path="res://art/mainmenu.webp" id="2_nic3x"]
-[ext_resource type="Texture2D" uid="uid://crbut6lhjj0up" path="res://art/backarrow.png" id="3_ewydw"]
-[ext_resource type="FontFile" uid="uid://bk6sax2jfn10n" path="res://font/grotesque/Grotesque Bourgeoisie.ttf" id="3_tswqe"]
+[ext_resource type="Texture2D" uid="uid://l0khv5mevpai" path="res://art/menu_bg_1.png" id="2_ys742"]
+[ext_resource type="Texture2D" uid="uid://c7ubfifad07vs" path="res://art/menu_bg_2.png" id="3_m6n1o"]
 [ext_resource type="FontFile" uid="uid://demx0aaebdrhf" path="res://font/cookie/Cookie-Regular.ttf" id="4_2mgvv"]
+[ext_resource type="Texture2D" uid="uid://bygdwfnmhfbcp" path="res://art/backarrow_blue.png" id="4_fuhw0"]
+[ext_resource type="FontFile" uid="uid://e2hvpt36yn1p" path="res://font/big_bottom_cartoon/Big Bottom Cartoon.ttf" id="5_o8vgx"]
 
 [sub_resource type="Gradient" id="Gradient_88x11"]
 colors = PackedColorArray(1, 0.14902, 1, 1, 1, 0.584314, 1, 1)
@@ -20,17 +21,39 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 
 gradient = SubResource("Gradient_gapkn")
 width = 1801
 
-[node name="CreditsMenu" type="Node"]
+[node name="CreditsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_6tujf")
 
-[node name="CreditsScreen" type="Node2D" parent="."]
+[node name="CreditsScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 
-[node name="BackGround" type="TextureRect" parent="CreditsScreen"]
+[node name="Background" type="ColorRect" parent="CreditsScreen"]
 offset_right = 1792.0
 offset_bottom = 1024.0
 scale = Vector2(0.648153, 0.639121)
-texture = ExtResource("2_nic3x")
-metadata/_edit_use_anchors_ = true
+color = Color(0.427451, 0.45098, 1, 1)
+
+[node name="Background_1" type="TextureRect" parent="CreditsScreen"]
+offset_left = -1465.0
+offset_top = -1464.0
+offset_right = 2535.0
+offset_bottom = 2536.0
+scale = Vector2(0.869, 0.869)
+pivot_offset = Vector2(2000, 2000)
+texture = ExtResource("2_ys742")
+
+[node name="Background_2" type="TextureRect" parent="CreditsScreen"]
+offset_left = 3904.02
+offset_top = 6539.03
+offset_right = 7904.02
+offset_bottom = 10539.0
+rotation = -2.75238
+scale = Vector2(0.869, 0.869)
+pivot_offset = Vector2(2000, 2000)
+texture = ExtResource("3_m6n1o")
 
 [node name="BackButton" type="TextureButton" parent="CreditsScreen"]
 offset_left = 52.0
@@ -38,7 +61,7 @@ offset_top = 33.0
 offset_right = 308.0
 offset_bottom = 289.0
 scale = Vector2(0.307464, 0.307464)
-texture_normal = ExtResource("3_ewydw")
+texture_normal = ExtResource("4_fuhw0")
 stretch_mode = 0
 
 [node name="CreditsBox" type="Control" parent="CreditsScreen"]
@@ -47,9 +70,9 @@ anchors_preset = 0
 offset_top = -55.0
 offset_right = 40.0
 offset_bottom = -15.0
-metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="CreditsScreen/CreditsBox"]
+visible = false
 layout_mode = 0
 offset_left = 224.0
 offset_top = 117.0
@@ -60,20 +83,20 @@ texture = SubResource("GradientTexture1D_k72di")
 
 [node name="CreditsTitleText" type="RichTextLabel" parent="CreditsScreen/CreditsBox"]
 layout_mode = 0
-offset_left = 384.0
-offset_top = 148.0
-offset_right = 784.0
-offset_bottom = 248.0
-theme_override_fonts/normal_font = ExtResource("3_tswqe")
-theme_override_font_sizes/normal_font_size = 66
+offset_left = 382.0
+offset_top = 116.0
+offset_right = 782.0
+offset_bottom = 246.0
+theme_override_fonts/normal_font = ExtResource("5_o8vgx")
+theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = "[center]CREDITS[/center]"
+text = "[center]Credits[/center]"
 
 [node name="CreditsNames" type="RichTextLabel" parent="CreditsScreen/CreditsBox"]
 layout_mode = 0
-offset_left = 274.0
+offset_left = 289.0
 offset_top = 240.0
-offset_right = 874.0
+offset_right = 989.0
 offset_bottom = 440.0
 theme_override_fonts/normal_font = ExtResource("4_2mgvv")
 theme_override_font_sizes/normal_font_size = 50
@@ -82,16 +105,21 @@ Character Art ------------------Bloopy"
 
 [node name="OtherAcknowledgements" type="RichTextLabel" parent="CreditsScreen/CreditsBox"]
 layout_mode = 0
-offset_left = 226.0
-offset_top = 553.0
-offset_right = 1026.0
-offset_bottom = 753.0
+offset_left = 177.0
+offset_top = 506.0
+offset_right = 979.0
+offset_bottom = 701.0
 theme_override_fonts/normal_font = ExtResource("4_2mgvv")
 theme_override_font_sizes/normal_font_size = 30
-text = "\"Canon in D for Two Harps\" by Kevin MacLeod (incompetech.com)
-Other art/sound assets from public domain sources"
+bbcode_enabled = true
+text = "[center]\"Canon in D for Two Harps\" by Kevin MacLeod (incompetech.com)
+\"Cheerful\" by Lesfm (https://pixabay.com/users/lesfm-22579021/)
+Other art/sound assets from public domain sources
+
+This project was made with Godot![/center]"
 
 [node name="DarkScreen" type="TextureRect" parent="CreditsScreen"]
+visible = false
 offset_right = 1801.0
 offset_bottom = 1024.0
 scale = Vector2(0.648153, 0.639121)

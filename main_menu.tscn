@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dgautui580b6x"]
+[gd_scene load_steps=14 format=3 uid="uid://dgautui580b6x"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_3uuo0"]
 [ext_resource type="Texture2D" uid="uid://cjgqndr56bkmk" path="res://art/menu_bg_0.png" id="2_xmvy1"]
@@ -8,9 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://c7ubfifad07vs" path="res://art/menu_bg_2.png" id="4_v1a5p"]
 [ext_resource type="FontFile" uid="uid://demx0aaebdrhf" path="res://font/cookie/Cookie-Regular.ttf" id="5_7dwut"]
 [ext_resource type="FontFile" uid="uid://e2hvpt36yn1p" path="res://font/big_bottom_cartoon/Big Bottom Cartoon.ttf" id="8_u0njc"]
-[ext_resource type="Texture2D" uid="uid://cbqmp7al4ytfv" path="res://art/ball1.png" id="9_pj15p"]
-[ext_resource type="Texture2D" uid="uid://c1ur2ovwbcrje" path="res://art/ball3.png" id="10_lublq"]
-[ext_resource type="Texture2D" uid="uid://dywncqvu0afyp" path="res://art/ball8.png" id="11_nv65f"]
 [ext_resource type="PackedScene" uid="uid://k1ptx6tvrs4n" path="res://ball_prop.tscn" id="12_3a6sx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g21fj"]
@@ -245,6 +242,7 @@ offset_left = 118.0
 offset_top = 410.0
 offset_right = 327.0
 offset_bottom = 619.0
+mouse_filter = 2
 
 [node name="ShelfSprite" type="ColorRect" parent="MainMenuSelectionScreen/FoodItems"]
 layout_mode = 0
@@ -253,35 +251,6 @@ offset_top = 200.0
 offset_right = 1068.0
 offset_bottom = 289.0
 color = Color(1, 0.847059, 1, 1)
-
-[node name="Food_1" type="TextureRect" parent="MainMenuSelectionScreen/FoodItems"]
-visible = false
-layout_mode = 0
-scale = Vector2(0.525, 0.525)
-texture = ExtResource("9_pj15p")
-
-[node name="Food_2" type="TextureRect" parent="MainMenuSelectionScreen/FoodItems"]
-visible = false
-layout_mode = 0
-offset_left = 86.0
-offset_top = 51.0
-offset_right = 342.0
-offset_bottom = 307.0
-scale = Vector2(0.525, 0.525)
-pivot_offset = Vector2(128, 128)
-texture = ExtResource("10_lublq")
-flip_h = true
-
-[node name="Food_3" type="TextureRect" parent="MainMenuSelectionScreen/FoodItems"]
-visible = false
-layout_mode = 0
-offset_left = 659.0
-offset_top = 32.0
-offset_right = 915.0
-offset_bottom = 288.0
-scale = Vector2(0.525, 0.525)
-pivot_offset = Vector2(128, 128)
-texture = ExtResource("11_nv65f")
 
 [node name="RiceBallProp" parent="MainMenuSelectionScreen/FoodItems" instance=ExtResource("12_3a6sx")]
 position = Vector2(224, 166)

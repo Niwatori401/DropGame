@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnq20dyihnrbd"]
+[gd_scene load_steps=11 format=3 uid="uid://cnq20dyihnrbd"]
 
 [ext_resource type="Script" path="res://leaderboard_screen.gd" id="1_2rgwv"]
-[ext_resource type="Texture2D" uid="uid://c76luyx5ldkts" path="res://art/mainmenu.webp" id="2_pe1lw"]
-[ext_resource type="Texture2D" uid="uid://crbut6lhjj0up" path="res://art/backarrow.png" id="3_emc54"]
+[ext_resource type="Texture2D" uid="uid://l0khv5mevpai" path="res://art/menu_bg_1.png" id="2_q7xmh"]
+[ext_resource type="Texture2D" uid="uid://c7ubfifad07vs" path="res://art/menu_bg_2.png" id="3_f37os"]
+[ext_resource type="Texture2D" uid="uid://bygdwfnmhfbcp" path="res://art/backarrow_blue.png" id="4_awb82"]
 [ext_resource type="Texture2D" uid="uid://d1farnoh2db8a" path="res://art/score_background.png" id="4_fpdd8"]
 [ext_resource type="PackedScene" uid="uid://c1ei0e4b8wns0" path="res://score_client.tscn" id="5_fql8g"]
 [ext_resource type="Texture2D" uid="uid://hvnywndto8ob" path="res://art/small_button.png" id="5_ldhuh"]
+[ext_resource type="FontFile" uid="uid://e2hvpt36yn1p" path="res://font/big_bottom_cartoon/Big Bottom Cartoon.ttf" id="8_1pclr"]
 
 [sub_resource type="Gradient" id="Gradient_w3qtm"]
 offsets = PackedFloat32Array(0, 0.425806, 0.754839, 0.974194, 1)
@@ -15,30 +17,59 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 
 gradient = SubResource("Gradient_w3qtm")
 width = 1801
 
-[node name="LeaderboardScreen" type="Node2D"]
+[node name="LeaderboardScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_2rgwv")
 
-[node name="BackGround" type="TextureRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 1792.0
 offset_bottom = 1024.0
 scale = Vector2(0.648153, 0.639121)
-texture = ExtResource("2_pe1lw")
-metadata/_edit_use_anchors_ = true
+color = Color(0.427451, 0.45098, 1, 1)
+
+[node name="Background_1" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -1465.0
+offset_top = -1464.0
+offset_right = 2535.0
+offset_bottom = 2536.0
+scale = Vector2(0.869, 0.869)
+pivot_offset = Vector2(2000, 2000)
+texture = ExtResource("2_q7xmh")
+
+[node name="Background_2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 3904.02
+offset_top = 6539.03
+offset_right = 7904.02
+offset_bottom = 10539.0
+rotation = -2.75238
+scale = Vector2(0.869, 0.869)
+pivot_offset = Vector2(2000, 2000)
+texture = ExtResource("3_f37os")
 
 [node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 52.0
 offset_top = 33.0
 offset_right = 308.0
 offset_bottom = 289.0
 scale = Vector2(0.307464, 0.307464)
-texture_normal = ExtResource("3_emc54")
+texture_normal = ExtResource("4_awb82")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="ScoreBoardContainer" type="Node2D" parent="."]
-position = Vector2(-4, -18)
+[node name="ScoreBoardContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -4.0
+offset_top = -18.0
+offset_right = -4.0
+offset_bottom = -18.0
 
 [node name="TextureRect" type="TextureRect" parent="ScoreBoardContainer"]
+layout_mode = 0
 offset_left = 286.0
 offset_top = 22.0
 offset_right = 414.0
@@ -46,17 +77,19 @@ offset_bottom = 150.0
 texture = ExtResource("4_fpdd8")
 
 [node name="ScoreListContainer" type="Node2D" parent="ScoreBoardContainer" groups=["personal_score_container"]]
-position = Vector2(0, 40)
+position = Vector2(0, 45)
 
 [node name="PlayerScoreContainer" type="Node2D" parent="ScoreBoardContainer" groups=["player_score_container"]]
-position = Vector2(0, 55)
+position = Vector2(0, 60)
 
 [node name="NextButton" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 1040.0
-offset_top = 498.0
+offset_top = 560.0
 offset_right = 1130.0
-offset_bottom = 558.0
+offset_bottom = 620.0
 texture_normal = ExtResource("5_ldhuh")
+metadata/_edit_group_ = true
 
 [node name="ButtonText" type="RichTextLabel" parent="NextButton"]
 layout_mode = 0
@@ -70,18 +103,20 @@ bbcode_enabled = true
 text = "[center]Next[/center]"
 
 [node name="PreviousButton" type="TextureButton" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 935.0
-offset_top = 498.0
-offset_right = 1025.0
-offset_bottom = 558.0
+offset_left = 940.0
+offset_top = 560.0
+offset_right = 1030.0
+offset_bottom = 620.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("5_ldhuh")
+metadata/_edit_group_ = true
 
 [node name="ButtonText" type="RichTextLabel" parent="PreviousButton"]
 layout_mode = 0
@@ -94,16 +129,28 @@ theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]Prev[/center]"
 
+[node name="ScoreClient" parent="." instance=ExtResource("5_fql8g")]
+
+[node name="LeaderboardTitle" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 372.0
+offset_top = -2.0
+offset_right = 827.0
+offset_bottom = 121.0
+theme_override_fonts/normal_font = ExtResource("8_1pclr")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]Leaderboard[/center]"
+
 [node name="DarkScreen" type="TextureRect" parent="."]
 visible = false
+layout_mode = 0
 offset_right = 1801.0
 offset_bottom = 1024.0
 scale = Vector2(0.648153, 0.639121)
 mouse_filter = 2
 texture = SubResource("GradientTexture1D_fpidl")
 metadata/_edit_use_anchors_ = true
-
-[node name="ScoreClient" parent="." instance=ExtResource("5_fql8g")]
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="NextButton" to="ScoreClient" method="_on_next_button_pressed"]

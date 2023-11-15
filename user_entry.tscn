@@ -97,7 +97,7 @@ offset_left = 473.0
 offset_top = 458.0
 offset_right = 639.0
 offset_bottom = 516.0
-text = "Skip"
+text = "Skip (Offline)"
 
 [node name="HTTPSubmit" type="HTTPRequest" parent="."]
 

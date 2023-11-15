@@ -10,6 +10,11 @@ var config = ConfigFile.new();
 var total_records: int = 0;
 var base_url = "http://localhost:8080"
 
+
+
+
+
+
 func _ready():
 	config.load("user://config.cfg")
 	get_user_by_name(config.get_value("account", "username"));
@@ -30,7 +35,12 @@ func get_user_count():
 	$HTTPGetUserCount.request("%s/user/getUserCount" % [base_url]);
 
 func on_get_user_count_completed(result, response_code, headers, body):
-	self.total_records = JSON.parse_string(body.get_string_from_utf8())
+	if response_code == 0 or (response_code >= 400 and response_code < 500):
+		print("Client error");
+	elif response_code >= 500:
+		print("Server error");
+	else:
+		self.total_records = JSON.parse_string(body.get_string_from_utf8())
 	
 
 func _on_next_button_pressed():

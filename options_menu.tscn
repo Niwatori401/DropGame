@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdxqjd5x5xu00"]
+[gd_scene load_steps=10 format=3 uid="uid://cdxqjd5x5xu00"]
 
 [ext_resource type="Script" path="res://options_menu.gd" id="1_qt41n"]
-[ext_resource type="Texture2D" uid="uid://crbut6lhjj0up" path="res://art/backarrow.png" id="2_5q7fv"]
-[ext_resource type="Texture2D" uid="uid://ifa51bognl5u" path="res://art/menubutton.png" id="3_dunyf"]
+[ext_resource type="Texture2D" uid="uid://l0khv5mevpai" path="res://art/menu_bg_1.png" id="3_04f38"]
 [ext_resource type="AudioStream" uid="uid://cxu67pbsv5cnv" path="res://audio/pop.ogg" id="4_fgcxg"]
+[ext_resource type="Texture2D" uid="uid://c7ubfifad07vs" path="res://art/menu_bg_2.png" id="4_l6gme"]
+[ext_resource type="Texture2D" uid="uid://bygdwfnmhfbcp" path="res://art/backarrow_blue.png" id="4_vkgrx"]
+[ext_resource type="Texture2D" uid="uid://c5khpjl7tvpnv" path="res://art/menubutton_blue.png" id="5_atf4n"]
+[ext_resource type="FontFile" uid="uid://e2hvpt36yn1p" path="res://font/big_bottom_cartoon/Big Bottom Cartoon.ttf" id="7_w1cu4"]
 
 [sub_resource type="Gradient" id="Gradient_hf1ml"]
 offsets = PackedFloat32Array(0, 0.425806, 0.754839, 0.974194, 1)
@@ -13,17 +16,39 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 
 gradient = SubResource("Gradient_hf1ml")
 width = 1801
 
-[node name="OptionsMenu" type="Node"]
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_qt41n")
 
-[node name="OptionsScreen" type="Node2D" parent="."]
+[node name="OptionsScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="BackGround" type="ColorRect" parent="OptionsScreen"]
 offset_right = 1792.0
 offset_bottom = 1024.0
 scale = Vector2(0.648153, 0.639121)
 color = Color(0.427451, 0.45098, 1, 1)
-metadata/_edit_use_anchors_ = true
+
+[node name="Background_1" type="TextureRect" parent="OptionsScreen"]
+offset_left = -1727.0
+offset_top = -1726.0
+offset_right = 2273.0
+offset_bottom = 2274.0
+scale = Vector2(0.869, 0.869)
+pivot_offset = Vector2(2000, 2000)
+texture = ExtResource("3_04f38")
+
+[node name="Background_2" type="TextureRect" parent="OptionsScreen"]
+offset_left = 955.51
+offset_top = 2271.51
+offset_right = 4955.51
+offset_bottom = 6271.51
+rotation = -2.75238
+scale = Vector2(0.869, 0.869)
+pivot_offset = Vector2(2000, 2000)
+texture = ExtResource("4_l6gme")
 
 [node name="BackButton" type="TextureButton" parent="OptionsScreen"]
 offset_left = 52.0
@@ -31,19 +56,23 @@ offset_top = 33.0
 offset_right = 308.0
 offset_bottom = 289.0
 scale = Vector2(0.307464, 0.307464)
-texture_normal = ExtResource("2_5q7fv")
+texture_normal = ExtResource("4_vkgrx")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="MusicVolumeSlider" type="Node2D" parent="OptionsScreen"]
-position = Vector2(591, 264)
+[node name="MusicVolumeSlider" type="Control" parent="OptionsScreen"]
+anchors_preset = 0
+offset_left = 591.0
+offset_top = 264.0
+offset_right = 591.0
+offset_bottom = 264.0
 
 [node name="BackgroundTexture" type="TextureRect" parent="OptionsScreen/MusicVolumeSlider"]
 offset_left = -141.0
 offset_top = -28.0
 offset_right = 144.0
 offset_bottom = 26.0
-texture = ExtResource("3_dunyf")
+texture = ExtResource("5_atf4n")
 
 [node name="Slider" type="HSlider" parent="OptionsScreen/MusicVolumeSlider"]
 offset_left = -124.0
@@ -53,6 +82,7 @@ offset_bottom = 20.0
 value = 40.0
 
 [node name="OptionName" type="RichTextLabel" parent="OptionsScreen/MusicVolumeSlider"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -68,15 +98,19 @@ mouse_filter = 2
 bbcode_enabled = true
 text = "[center]Music Volume[/center]"
 
-[node name="SFXVolumeSlider" type="Node2D" parent="OptionsScreen"]
-position = Vector2(593, 321)
+[node name="SFXVolumeSlider" type="Control" parent="OptionsScreen"]
+anchors_preset = 0
+offset_left = 593.0
+offset_top = 321.0
+offset_right = 593.0
+offset_bottom = 321.0
 
 [node name="BackgroundTexture" type="TextureRect" parent="OptionsScreen/SFXVolumeSlider"]
 offset_left = -141.0
 offset_top = -28.0
 offset_right = 144.0
 offset_bottom = 26.0
-texture = ExtResource("3_dunyf")
+texture = ExtResource("5_atf4n")
 
 [node name="Slider" type="HSlider" parent="OptionsScreen/SFXVolumeSlider"]
 offset_left = -124.0
@@ -86,6 +120,7 @@ offset_bottom = 20.0
 value = 75.0
 
 [node name="OptionName" type="RichTextLabel" parent="OptionsScreen/SFXVolumeSlider"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -105,6 +140,25 @@ text = "[center]SFX Volume[/center]"
 stream = ExtResource("4_fgcxg")
 bus = &"SFX"
 
+[node name="OptionsTitle" type="RichTextLabel" parent="OptionsScreen"]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 66.0
+offset_right = 792.0
+offset_bottom = 266.0
+theme_override_fonts/normal_font = ExtResource("7_w1cu4")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]Options[/center]"
+
+[node name="CheckBox" type="CheckBox" parent="OptionsScreen"]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 366.0
+offset_right = 672.0
+offset_bottom = 397.0
+text = "Toggle Fullscreen"
+
 [node name="DarkScreen" type="TextureRect" parent="OptionsScreen"]
 visible = false
 offset_right = 1801.0
@@ -118,3 +172,4 @@ metadata/_edit_use_anchors_ = true
 [connection signal="value_changed" from="OptionsScreen/MusicVolumeSlider/Slider" to="." method="_on_music_slider_value_changed"]
 [connection signal="drag_ended" from="OptionsScreen/SFXVolumeSlider/Slider" to="." method="_on_sfx_slider_drag_ended"]
 [connection signal="value_changed" from="OptionsScreen/SFXVolumeSlider/Slider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="toggled" from="OptionsScreen/CheckBox" to="." method="_on_check_box_toggled"]
