@@ -31,12 +31,14 @@ layout_mode = 3
 anchors_preset = 0
 
 [node name="Background" type="ColorRect" parent="CreditsScreen"]
+layout_mode = 0
 offset_right = 1792.0
 offset_bottom = 1024.0
 scale = Vector2(0.648153, 0.639121)
 color = Color(0.427451, 0.45098, 1, 1)
 
 [node name="Background_1" type="TextureRect" parent="CreditsScreen"]
+layout_mode = 0
 offset_left = -1465.0
 offset_top = -1464.0
 offset_right = 2535.0
@@ -46,6 +48,7 @@ pivot_offset = Vector2(2000, 2000)
 texture = ExtResource("2_ys742")
 
 [node name="Background_2" type="TextureRect" parent="CreditsScreen"]
+layout_mode = 0
 offset_left = 3904.02
 offset_top = 6539.03
 offset_right = 7904.02
@@ -56,6 +59,7 @@ pivot_offset = Vector2(2000, 2000)
 texture = ExtResource("3_m6n1o")
 
 [node name="BackButton" type="TextureButton" parent="CreditsScreen"]
+layout_mode = 0
 offset_left = 52.0
 offset_top = 33.0
 offset_right = 308.0
@@ -101,25 +105,26 @@ offset_bottom = 440.0
 theme_override_fonts/normal_font = ExtResource("4_2mgvv")
 theme_override_font_sizes/normal_font_size = 50
 text = "Programming ----------- Niwatori401
-Character Art ------------------Bloopy"
+Character Art ------------------Bloopy
+Music  --------------------- Ultranova"
 
 [node name="OtherAcknowledgements" type="RichTextLabel" parent="CreditsScreen/CreditsBox"]
 layout_mode = 0
 offset_left = 177.0
-offset_top = 506.0
+offset_top = 524.0
 offset_right = 979.0
-offset_bottom = 701.0
+offset_bottom = 719.0
 theme_override_fonts/normal_font = ExtResource("4_2mgvv")
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "[center]\"Canon in D for Two Harps\" by Kevin MacLeod (incompetech.com)
-\"Cheerful\" by Lesfm (https://pixabay.com/users/lesfm-22579021/)
-Other art/sound assets from public domain sources
+text = "[center]\"Cheerful\" by Lesfm (https://pixabay.com/users/lesfm-22579021/)
+Other art/sound assets from public domain or equivalent sources
 
 This project was made with Godot![/center]"
 
 [node name="DarkScreen" type="TextureRect" parent="CreditsScreen"]
 visible = false
+layout_mode = 0
 offset_right = 1801.0
 offset_bottom = 1024.0
 scale = Vector2(0.648153, 0.639121)

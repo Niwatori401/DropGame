@@ -17,7 +17,6 @@ func _ready():
 	if flip_sprite:
 		get_node("Hitbox/Sprite").flip_h = true;
 	update_scale()
-	
 
 func update_scale():
 	$Hitbox.scale = Vector2(base_scale * ball_size, base_scale * ball_size)
@@ -25,13 +24,12 @@ func update_scale():
 func _input(event):
 	if event is InputEventMouseMotion and is_hovered_over:
 		launch_velocity = event.get_velocity() * Vector2(0.5,0.5);	
-	
-func _process(delta):
+
+func _process(_delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and is_hovered_over:
 		should_teleport = true;
 	elif Input.is_action_just_released("left_click"):
 		should_launch = true;
-	
 
 func _integrate_forces(state):
 	# Fixes a weird graphical issue where when spawned these balls would be super stretched.
@@ -45,11 +43,9 @@ func _integrate_forces(state):
 		should_launch = false;
 		state.linear_velocity = launch_velocity;
 
-
-
-func _on_mouse_shape_entered(shape_idx):
+func _on_mouse_shape_entered(_shape_idx):
 	is_hovered_over = true;
 
 
-func _on_mouse_shape_exited(shape_idx):
+func _on_mouse_shape_exited(_shape_idx):
 	is_hovered_over = false;

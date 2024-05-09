@@ -12,7 +12,7 @@ var TITLE_GROWTH_RATE = 0.02;
 func _ready():
 	$OptionsScreen/DarkScreen.show();
 	$OptionsScreen/DarkScreen.modulate.a = 1;
-
+	$BGM.play();
 
 func _process(delta):
 	$OptionsScreen/Background_1.rotation += delta * 0.1
@@ -32,6 +32,7 @@ func _process(delta):
 	if should_fade_out:
 		if $OptionsScreen/DarkScreen.modulate.a < 0:
 			$OptionsScreen/DarkScreen.modulate.a = 0;
+		$BGM.volume_db -= 20 * delta;
 		
 		$OptionsScreen/DarkScreen.modulate.a += delta * 1.5;
 	else:

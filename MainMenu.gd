@@ -14,13 +14,9 @@ var config = ConfigFile.new();
 
 
 func _ready():
-	if !get_node("/root/Globals").started_main_menu_music:
-		get_node("/root/Globals").started_main_menu_music = true;
-		get_node("/root/Globals/BGM").play();
-	if !get_node("/root/Globals").one_time_music_volume_adjusted:
-		get_node("/root/Globals").one_time_music_volume_adjusted = true;
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), -12);
-		
+
+	$BGM.play();
+
 	$MainMenuSelectionScreen/DarkScreen.show();
 	$MainMenuSelectionScreen/DarkScreen.modulate.a = 1;
 	config.load("user://config.cfg");
@@ -46,6 +42,7 @@ func _process(delta):
 		if $MainMenuSelectionScreen/DarkScreen.modulate.a < 0:
 			$MainMenuSelectionScreen/DarkScreen.modulate.a = 0;
 		
+		$BGM.volume_db -= delta * 20;
 		$MainMenuSelectionScreen/DarkScreen.modulate.a += delta * 1.5;
 	else:
 		$MainMenuSelectionScreen/DarkScreen.modulate.a -= delta * 1.5;
@@ -58,8 +55,7 @@ func _on_play_button_pressed():
 	should_fade_out = true;
 	get_tree().create_timer(1).timeout.connect(func(): 
 		get_tree().change_scene_to_file("res://main_root.tscn"); 
-		get_node("/root/Globals/BGM").stop();
-		get_node("/root/Globals").started_main_menu_music = false;
+		$BGM.stop();
 		)
 	
 

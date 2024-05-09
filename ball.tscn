@@ -85,7 +85,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Ball" type="RigidBody2D" groups=["ball"]]
+[node name="Ball2" type="RigidBody2D" groups=["ball"]]
 physics_material_override = SubResource("PhysicsMaterial_w0cf1")
 script = ExtResource("1_vbfso")
 

@@ -1,7 +1,7 @@
 extends AnimatedSprite2D
 
 # Minimum score for each sprite level
-var point_thresholds = [0, 30, 50, 70, 100];
+var point_thresholds = [0, 30, 50, 70, 100, 150, 200, 250];
 var current_level = 0;
 
 var score = 0;

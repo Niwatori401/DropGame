@@ -40,7 +40,7 @@ func _on_skip_button_pressed():
 	get_tree().create_timer(1.5).timeout.connect(func(): get_tree().change_scene_to_file("res://main_menu.tscn"))
 	config.save("user://config.cfg");
 
-func on_submit_request_complete(result, response_code, headers, body):
+func on_submit_request_complete(_result, response_code, headers, body):
 	if (response_code != 200):
 		return;
 		

@@ -7,6 +7,9 @@ func _ready():
 	$CreditsScreen/DarkScreen.modulate.a = 1;
 
 func _process(delta):
+	$CreditsScreen/Background_1.rotation += delta * 0.1
+	$CreditsScreen/Background_2.rotation -= delta * 0.2
+	
 	if should_fade_out:
 		if $CreditsScreen/DarkScreen.modulate.a < 0:
 			$CreditsScreen/DarkScreen.modulate.a = 0;

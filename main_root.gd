@@ -27,6 +27,7 @@ func _process(delta):
 	if should_fade_out:
 		if $DarkScreen.modulate.a < 0:
 			$DarkScreen.modulate.a = 0;
+		$BGM.volume_db -= 20 * delta;
 		
 		$DarkScreen.modulate.a += delta * 0.7;
 	else:

@@ -12,7 +12,7 @@ config_version=5
 
 config/name="DropGame"
 run/main_scene="res://user_entry.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0, 0.160784, 0.192157, 1)
 config/icon="res://icon.svg"
 
