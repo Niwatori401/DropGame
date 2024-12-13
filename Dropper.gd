@@ -5,6 +5,7 @@ const move_speed = 800
 @onready var score_counter = get_tree().get_nodes_in_group("score")[0]
 @onready var mainnode = get_tree().get_nodes_in_group("main")[0]
 @onready var character_sprite = get_tree().get_nodes_in_group("character")[0]
+@onready var ball_chart = get_tree().get_nodes_in_group("ball_chart")[0];
 
 const ball_sprite_scale_for_next = 0.18;
 const ball_sprite_scale_for_next_next = 0.14;
@@ -17,6 +18,7 @@ var current_ball_index : int
 var next_ball_index : int
 var next_next_ball_index : int
 
+var highest_ball_index_unlocked : int = 1;
 
 var ball_sprite_size : Vector2
 var rail_length : float
@@ -67,10 +69,17 @@ func spawn_falling_ball():
 	newball.update_scale()
 	newball.connect("popped", character_sprite._on_ball_popped)
 	newball.connect("popped", score_counter._on_ball_popped)
+	newball.connect("popped", ball_chart._on_ball_popped);
+	newball.connect("popped", self._on_ball_popped);
+	
 	newball.connect("game_over", character_sprite._on_game_over)
 	newball.connect("game_over", mainnode._on_game_over)
 	newball.connect("game_over", self._on_game_over)
+	newball.connect("game_over", ball_chart._on_game_over)
 	
+
+func _on_ball_popped(ball_number):
+	highest_ball_index_unlocked = max(ball_number - 1, highest_ball_index_unlocked);
 
 func _on_game_over():
 	can_move = false;
@@ -82,10 +91,12 @@ func get_random_index():
 		return 1
 	elif randval < 0.7:
 		return 2
-	elif randval < 0.85:
+	elif randval < 0.85 and highest_ball_index_unlocked > 1:
 		return 3
-	else:
+	elif randval < 1.00 and highest_ball_index_unlocked > 2:
 		return 4
+	else:
+		return 1
 
 func spawn_new_ball_texture():
 
