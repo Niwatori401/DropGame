@@ -11,44 +11,45 @@
 [ext_resource type="Texture2D" uid="uid://dywncqvu0afyp" path="res://art/ball8.png" id="9_h2luw"]
 
 [node name="BallWheel" type="Sprite2D"]
+position = Vector2(9, 7)
 texture = ExtResource("1_extwh")
 
 [node name="ball1icon" type="Sprite2D" parent="."]
-position = Vector2(137, -111)
-scale = Vector2(0.35, 0.35)
+position = Vector2(138, -131)
+scale = Vector2(0.562109, 0.562109)
 texture = ExtResource("2_hi4ly")
 
 [node name="ball2icon" type="Sprite2D" parent="."]
-position = Vector2(176, 6.99999)
-scale = Vector2(0.35, 0.35)
+position = Vector2(188, -5)
+scale = Vector2(0.552344, 0.552344)
 texture = ExtResource("3_cn5kn")
 
 [node name="ball3icon" type="Sprite2D" parent="."]
-position = Vector2(138, 115)
-scale = Vector2(0.35, 0.35)
+position = Vector2(131, 112)
+scale = Vector2(0.444531, 0.444531)
 texture = ExtResource("4_ivtj0")
 
 [node name="ball4icon" type="Sprite2D" parent="."]
-position = Vector2(23, 183)
-scale = Vector2(0.35, 0.35)
+position = Vector2(-1, 195)
+scale = Vector2(0.585156, 0.585156)
 texture = ExtResource("5_12a7h")
 
 [node name="ball5icon" type="Sprite2D" parent="."]
-position = Vector2(-109, 138)
-scale = Vector2(0.35, 0.35)
+position = Vector2(-135, 132)
+scale = Vector2(0.479688, 0.479688)
 texture = ExtResource("6_3s736")
 
 [node name="ball6icon" type="Sprite2D" parent="."]
-position = Vector2(-173, 26)
-scale = Vector2(0.35, 0.35)
+position = Vector2(-185, -7)
+scale = Vector2(0.4875, 0.4875)
 texture = ExtResource("7_sedm8")
 
 [node name="ball7icon" type="Sprite2D" parent="."]
-position = Vector2(-150, -97)
-scale = Vector2(0.35, 0.35)
+position = Vector2(-137, -131)
+scale = Vector2(0.499219, 0.499219)
 texture = ExtResource("8_wp8uy")
 
 [node name="ball8icon" type="Sprite2D" parent="."]
-position = Vector2(-50, -174)
-scale = Vector2(0.35, 0.35)
+position = Vector2(-6, -191)
+scale = Vector2(0.538281, 0.538281)
 texture = ExtResource("9_h2luw")

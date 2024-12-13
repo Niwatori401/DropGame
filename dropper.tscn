@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://1m8h0hsnkrvw" path="res://art/dropperHead.png" id="4_q06h2"]
 
 [node name="Dropper" type="Sprite2D"]
-position = Vector2(604, 95.0938)
+position = Vector2(604, 152)
 scale = Vector2(0.8, 1)
 texture = ExtResource("1_x5udc")
 script = ExtResource("1_o2nv7")
@@ -20,7 +20,7 @@ texture = ExtResource("4_q06h2")
 [node name="BallTexture" type="Sprite2D" parent="DropperHead"]
 
 [node name="NextBallBackground" type="Sprite2D" parent="."]
-position = Vector2(466.25, 2.90619)
+position = Vector2(146.25, -83)
 scale = Vector2(0.242132, 0.199963)
 texture = ExtResource("4_12icc")
 
@@ -28,7 +28,7 @@ texture = ExtResource("4_12icc")
 scale = Vector2(2, 2)
 
 [node name="NextNextBallBackground" type="Sprite2D" parent="."]
-position = Vector2(600, -30.0938)
+position = Vector2(285, -85)
 scale = Vector2(0.229727, 0.191727)
 texture = ExtResource("4_12icc")
 

@@ -94,9 +94,10 @@ scale = Vector2(4.675, 4.675)
 shape = SubResource("CircleShape2D_ud7b0")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Hitbox"]
-scale = Vector2(0.081, 0.081)
+position = Vector2(0, -0.025)
+scale = Vector2(0.082, 0.082)
 sprite_frames = SubResource("SpriteFrames_rvfp1")
-animation = &"3"
+animation = &"5"
 
 [node name="Pop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_56okw")
