@@ -36,6 +36,7 @@ func update_textures():
 			get_node(ball_nodes[i]).texture = mystery_tex;
 
 func _on_ball_popped(ball_type):
+	print("wtf %s" % ball_type)
 	if ball_type > 8:
 		return;
 	

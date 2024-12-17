@@ -72,5 +72,6 @@ func pop_ball(body):
 	self.teleport_location = (start_loc + end_loc) / 2
 	$Pop.set_pitch_scale(self.ball_pitches[self.ball_type - 1]);
 	$Pop.play();
+
 	SignalBus.popped.emit(self.ball_type);
 	body.queue_free()

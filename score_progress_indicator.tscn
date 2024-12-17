@@ -11,16 +11,15 @@ offset_top = 257.0
 offset_right = 1133.0
 offset_bottom = 513.0
 rotation = -3.14159
-value = 100.0
+max_value = 1.0
+step = 0.01
+value = 1.0
 texture_under = ExtResource("1_3lnrq")
 texture_progress = ExtResource("2_cpcej")
 script = ExtResource("3_3l7nk")
 
-[node name="Face" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 36.0007
-offset_top = 260.0
-offset_right = 236.001
-offset_bottom = 460.0
+[node name="Face" type="Sprite2D" parent="."]
+position = Vector2(437, 161.999)
 rotation = 3.14159
+scale = Vector2(0.937121, 0.937121)
 texture = ExtResource("3_2loe6")
