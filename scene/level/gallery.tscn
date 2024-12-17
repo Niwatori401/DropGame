@@ -1,0 +1,105 @@
+[gd_scene load_steps=10 format=3 uid="uid://c2lf4s6asa3hd"]
+
+[ext_resource type="Script" path="res://script/level/gallery.gd" id="1_1h3u5"]
+[ext_resource type="PackedScene" uid="uid://bq3u31nvla0k8" path="res://scene/UI/button_with_label.tscn" id="1_hb1tq"]
+[ext_resource type="PackedScene" uid="uid://b8br66eicx4wi" path="res://scene/UI/button_listener_label.tscn" id="2_4788g"]
+[ext_resource type="Texture2D" uid="uid://csu3sb7d1p87l" path="res://art/UI/gallery/play_button.png" id="4_55xxr"]
+[ext_resource type="Texture2D" uid="uid://2vhihitggjb7" path="res://art/UI/gallery/lock_filled.png" id="5_b7oy1"]
+[ext_resource type="Texture2D" uid="uid://lpx1a0x6u7de" path="res://art/UI/gallery/photo.png" id="6_mn438"]
+[ext_resource type="Texture2D" uid="uid://d2tbkiaeq3bao" path="res://art/UI/gallery/photo_concept.png" id="7_tk81c"]
+[ext_resource type="PackedScene" path="res://scene/UI/sound_button.tscn" id="8_35x70"]
+[ext_resource type="PackedScene" uid="uid://banuy2fyigodd" path="res://scene/UI/fader.tscn" id="10_a1nll"]
+
+[node name="Gallery" type="Control"]
+layout_mode = 3
+anchor_right = 0.695
+anchor_bottom = 0.598
+offset_right = 1119.36
+offset_bottom = 706.496
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1h3u5")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ButtonListenerLabel" parent="." instance=ExtResource("2_4788g")]
+layout_mode = 0
+offset_top = 494.0
+offset_right = 1150.0
+offset_bottom = 644.0
+
+[node name="GalleryGrid" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 880.0
+offset_bottom = 304.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_constants/h_separation = 60
+theme_override_constants/v_separation = 60
+columns = 4
+
+[node name="GalleryItem_OpeningCutscene" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
+layout_mode = 2
+texture_normal = ExtResource("4_55xxr")
+texture_disabled = ExtResource("5_b7oy1")
+
+[node name="GalleryItem_Sketch_1" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
+layout_mode = 2
+texture_normal = ExtResource("6_mn438")
+texture_disabled = ExtResource("5_b7oy1")
+
+[node name="GalleryItem_concept_1" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
+layout_mode = 2
+texture_normal = ExtResource("7_tk81c")
+texture_disabled = ExtResource("5_b7oy1")
+
+[node name="GalleryItem_FinaleImage" parent="GalleryGrid" instance=ExtResource("1_hb1tq")]
+layout_mode = 2
+texture_normal = ExtResource("6_mn438")
+texture_disabled = ExtResource("5_b7oy1")
+
+[node name="CutscenePlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+bus = &"Music"
+
+[node name="DisplayItem" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -768.0
+offset_bottom = -446.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackButton" parent="." instance=ExtResource("8_35x70")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 542.0
+offset_right = 238.0
+offset_bottom = 643.0
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="Fader" parent="." instance=ExtResource("10_a1nll")]
+visible = false
+layout_mode = 1
+
+[connection signal="button_down" from="GalleryGrid/GalleryItem_OpeningCutscene" to="." method="_on_gallery_item_opening_cutscene_button_down"]
+[connection signal="button_down" from="GalleryGrid/GalleryItem_Sketch_1" to="." method="_on_gallery_item_sketch_1_button_down"]
+[connection signal="button_down" from="GalleryGrid/GalleryItem_concept_1" to="." method="_on_gallery_item_concept_1_button_down"]
+[connection signal="button_down" from="GalleryGrid/GalleryItem_FinaleImage" to="." method="_on_gallery_item_finale_image_button_down"]
+[connection signal="button_down" from="BackButton" to="." method="_on_back_button_button_down"]

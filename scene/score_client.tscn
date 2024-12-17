@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1ei0e4b8wns0"]
+
+[ext_resource type="Script" path="res://script/ScoreClient.gd" id="1_ojkwp"]
+
+[node name="ScoreClient" type="Node"]
+script = ExtResource("1_ojkwp")
+
+[node name="HTTPGetScoreBoard" type="HTTPRequest" parent="."]
+
+[node name="HTTPGetCurrentUser" type="HTTPRequest" parent="."]
+
+[node name="HTTPPostScore" type="HTTPRequest" parent="."]
+
+[node name="HTTPGetUserCount" type="HTTPRequest" parent="."]

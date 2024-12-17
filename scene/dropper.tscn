@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0aasxmpat2ch"]
+
+[ext_resource type="Script" path="res://script/Dropper.gd" id="1_o2nv7"]
+[ext_resource type="Texture2D" uid="uid://bgafjbcva7ugt" path="res://art/dropper_nextup/dropper.png" id="1_x5udc"]
+[ext_resource type="PackedScene" uid="uid://c2j4w5e102pj1" path="res://scene/ball.tscn" id="2_xhsm4"]
+[ext_resource type="Texture2D" uid="uid://fgr7koa3kb4y" path="res://art/WheelBackground.png" id="4_12icc"]
+[ext_resource type="Texture2D" uid="uid://1m8h0hsnkrvw" path="res://art/dropper_nextup/dropperHead.png" id="4_q06h2"]
+
+[node name="Dropper" type="Sprite2D"]
+position = Vector2(604, 152)
+scale = Vector2(0.8, 1)
+texture = ExtResource("1_x5udc")
+script = ExtResource("1_o2nv7")
+ball_scene = ExtResource("2_xhsm4")
+
+[node name="NextBallBackground" type="Sprite2D" parent="."]
+position = Vector2(146.25, -83)
+scale = Vector2(0.19605, 0.161907)
+texture = ExtResource("4_12icc")
+
+[node name="Ball" type="Sprite2D" parent="NextBallBackground"]
+scale = Vector2(2, 2)
+
+[node name="NextNextBallBackground" type="Sprite2D" parent="."]
+position = Vector2(285, -85)
+scale = Vector2(0.160749, 0.134159)
+texture = ExtResource("4_12icc")
+
+[node name="Ball" type="Sprite2D" parent="NextNextBallBackground"]
+scale = Vector2(2, 2)
+
+[node name="DropperHead" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.12)
+texture = ExtResource("4_q06h2")
+
+[node name="BallTexture" type="Sprite2D" parent="DropperHead"]
+
+[node name="DropTimer" type="Timer" parent="."]
+wait_time = 0.75
+
+[connection signal="timeout" from="DropTimer" to="." method="_on_drop_timer_timeout"]
