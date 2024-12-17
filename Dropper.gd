@@ -24,8 +24,11 @@ var ball_sprite_size : Vector2
 var rail_length : float
 
 func _ready():
+	SignalBus.new_game.connect(_on_new_game);
 	self.next_ball_index = get_random_index()
 	self.next_next_ball_index = get_random_index()
+	SignalBus.popped.connect(self._on_ball_popped);
+	SignalBus.game_over.connect(self._on_game_over);
 	
 	spawn_new_ball_texture()
 	self.rail_length = texture.get_width() * scale.x
@@ -67,16 +70,7 @@ func spawn_falling_ball():
 	newball.ball_type = self.current_ball_index
 	newball.get_node("Hitbox/Sprite").play(str(newball.ball_type))
 	newball.update_scale()
-	newball.connect("popped", character_sprite._on_ball_popped)
-	newball.connect("popped", score_counter._on_ball_popped)
-	newball.connect("popped", ball_chart._on_ball_popped);
-	newball.connect("popped", self._on_ball_popped);
-	
-	newball.connect("game_over", character_sprite._on_game_over)
-	newball.connect("game_over", mainnode._on_game_over)
-	newball.connect("game_over", self._on_game_over)
-	newball.connect("game_over", ball_chart._on_game_over)
-	
+
 
 func _on_ball_popped(ball_number):
 	highest_ball_index_unlocked = max(ball_number - 1, highest_ball_index_unlocked);

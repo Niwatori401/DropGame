@@ -13,14 +13,14 @@ var base_url = "http://localhost:8080"
 #Prevents submitting the score multiple times due to the ball bouncing on the end line
 var submitted_score = false;
 func _ready():
+	SignalBus.game_over.connect(_on_game_over);
+	
 	$DarkScreen.show();
 	$DarkScreen.modulate.a = 1;
 	$GameOver.modulate.a = 0;
 	$GameOver.hide();
 	config.load("user://config.cfg");
-	connect("new_game", $Dropper._on_new_game);
-	connect("new_game", $Character._on_new_game);
-	
+
 
 func _process(delta):
 	
@@ -49,7 +49,7 @@ func restart_game():
 	$GameOver.hide();
 	$BGM.stop();
 	$BGM.play();
-	emit_signal("new_game")
+	SignalBus.new_game.emit();
 	submitted_score = false;
 
 	var nodes_in_group = get_tree().get_nodes_in_group("ball")

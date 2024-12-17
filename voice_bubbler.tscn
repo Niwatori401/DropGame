@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://nptlsdn4i55y"]
+
+[ext_resource type="Script" path="res://voice_bubbler.gd" id="1_qt656"]
+
+[node name="VoiceBubbler" type="AudioStreamPlayer"]
+script = ExtResource("1_qt656")

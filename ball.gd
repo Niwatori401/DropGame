@@ -1,6 +1,4 @@
 extends RigidBody2D
-signal popped(ball_type)
-signal game_over
 
 @export var ball_type : int = 1
 @export var max_ball_type : int = 8
@@ -40,16 +38,7 @@ func _process(delta):
 		
 		for body in coliBodies:
 			if body.is_in_group("ball") and body.ball_type == self.ball_type and body.ball_type < self.max_ball_type:
-				self.ball_type += 1
-				should_teleport = true
-				get_node("Hitbox/Sprite").play(str(self.ball_type))
-				update_scale()
-				var start_loc = self.get_global_transform().get_origin()
-				var end_loc = body.get_global_transform().get_origin()
-				self.teleport_location = (start_loc + end_loc) / 2
-		
-				emit_signal("popped", self.ball_type)
-				body.queue_free()
+				pop_ball(body);
 	
 
 func _integrate_forces(state):
@@ -67,18 +56,21 @@ func _on_body_entered(body):
 		time_since_thud = 0;
 		
 	if body.is_in_group("FailLine"):
-		emit_signal("game_over");
+		SignalBus.game_over.emit();
 		
 	if body.is_in_group("ball") and body.ball_type == self.ball_type and body.ball_type < self.max_ball_type:
-		self.ball_type += 1
-		should_teleport = true
-		get_node("Hitbox/Sprite").play(str(self.ball_type))
-		update_scale()
-		var start_loc = self.get_global_transform().get_origin()
-		var end_loc = body.get_global_transform().get_origin()
-		self.teleport_location = (start_loc + end_loc) / 2
-		$Pop.set_pitch_scale(self.ball_pitches[self.ball_type - 1]);
-		$Pop.play();
-		emit_signal("popped", self.ball_type)
-		body.queue_free()
+		pop_ball(body);
 			
+
+func pop_ball(body):
+	self.ball_type += 1
+	should_teleport = true
+	get_node("Hitbox/Sprite").play(str(self.ball_type))
+	update_scale()
+	var start_loc = self.get_global_transform().get_origin()
+	var end_loc = body.get_global_transform().get_origin()
+	self.teleport_location = (start_loc + end_loc) / 2
+	$Pop.set_pitch_scale(self.ball_pitches[self.ball_type - 1]);
+	$Pop.play();
+	SignalBus.popped.emit(self.ball_type);
+	body.queue_free()

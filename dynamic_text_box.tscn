@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://gs525m4r8f4r"]
+
+[ext_resource type="Script" path="res://dynamic_text_box.gd" id="1_pfiob"]
+[ext_resource type="Texture2D" uid="uid://dxpyjtcvg40nn" path="res://speech_box.png" id="2_ck060"]
+[ext_resource type="FontFile" uid="uid://caweti30kcu0g" path="res://asset/RobotoCondensed-Regular.ttf" id="3_ratc2"]
+[ext_resource type="FontFile" uid="uid://5m4rr04qil2t" path="res://asset/RobotoCondensed-Italic.ttf" id="4_jfs4b"]
+[ext_resource type="FontFile" uid="uid://smwe65i65ypm" path="res://asset/RobotoCondensed-BoldItalic.ttf" id="5_8e7yv"]
+[ext_resource type="FontFile" uid="uid://y84wvslasfj2" path="res://asset/RobotoCondensed-Bold.ttf" id="6_a7f5v"]
+
+[node name="DynamicTextBox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -198.0
+offset_top = 190.0
+offset_right = -198.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.560976, 0.689498)
+pivot_offset = Vector2(960, 0)
+script = ExtResource("1_pfiob")
+letters_per_second = 60.0
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 260.0
+offset_top = 708.0
+offset_right = -260.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_ck060")
+
+[node name="SpeechText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -669.0
+offset_top = -359.0
+offset_right = 616.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(0.851769, 0.851769, 0.851769, 1)
+theme_override_colors/font_outline_color = Color(0.118581, 0.118581, 0.118581, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("3_ratc2")
+theme_override_fonts/bold_font = ExtResource("6_a7f5v")
+theme_override_fonts/italics_font = ExtResource("4_jfs4b")
+theme_override_fonts/bold_italics_font = ExtResource("5_8e7yv")
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+theme_override_font_sizes/bold_italics_font_size = 50
+bbcode_enabled = true
+
+[node name="Voice" type="AudioStreamPlayer" parent="."]
+bus = &"Music"

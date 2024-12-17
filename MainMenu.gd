@@ -82,3 +82,8 @@ func _on_logout_pressed():
 	config.save("user://config.cfg");
 	should_fade_out = true;
 	get_tree().create_timer(1).timeout.connect(func(): get_tree().change_scene_to_file("res://user_entry.tscn"));
+
+
+func _on_gallery_button_pressed():
+	should_fade_out = true;
+	get_tree().create_timer(1).timeout.connect(func(): get_tree().change_scene_to_file("res://gallery.tscn"))

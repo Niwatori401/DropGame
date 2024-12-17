@@ -74,27 +74,15 @@ scale = Vector2(0.307464, 0.307464)
 texture_normal = ExtResource("3_xd1ji")
 stretch_mode = 0
 
-[node name="MenuOptions" type="Control" parent="MainMenuSelectionScreen"]
-anchors_preset = 0
-offset_left = 580.0
-offset_top = 386.0
-offset_right = 580.0
-offset_bottom = 386.0
-mouse_filter = 1
+[node name="MenuOptions" type="VBoxContainer" parent="MainMenuSelectionScreen"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 313.0
+offset_right = 712.0
+offset_bottom = 657.0
 
 [node name="PlayButton" type="TextureButton" parent="MainMenuSelectionScreen/MenuOptions"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -142.0
-offset_top = -24.0
-offset_right = 143.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 texture_normal = ExtResource("4_15o60")
 stretch_mode = 0
 
@@ -113,18 +101,7 @@ bbcode_enabled = true
 text = "[center]Play[/center]"
 
 [node name="OptionsButton" type="TextureButton" parent="MainMenuSelectionScreen/MenuOptions"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -142.0
-offset_top = 36.0
-offset_right = 143.0
-offset_bottom = 90.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 texture_normal = ExtResource("4_15o60")
 stretch_mode = 0
 
@@ -140,19 +117,25 @@ theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "[center]Options[/center]"
 
+[node name="GalleryButton" type="TextureButton" parent="MainMenuSelectionScreen/MenuOptions"]
+layout_mode = 2
+texture_normal = ExtResource("4_15o60")
+stretch_mode = 0
+
+[node name="ButtonText" type="RichTextLabel" parent="MainMenuSelectionScreen/MenuOptions/GalleryButton"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 8.0
+offset_right = 289.0
+offset_bottom = 62.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_7dwut")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[center]Gallery[/center]"
+
 [node name="LeaderboardButton" type="TextureButton" parent="MainMenuSelectionScreen/MenuOptions"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -142.0
-offset_top = 96.0
-offset_right = 143.0
-offset_bottom = 150.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 texture_normal = ExtResource("4_15o60")
 stretch_mode = 0
 
@@ -169,18 +152,7 @@ bbcode_enabled = true
 text = "[center]Leaderboard[/center]"
 
 [node name="Credits" type="TextureButton" parent="MainMenuSelectionScreen/MenuOptions"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -142.0
-offset_top = 156.0
-offset_right = 143.0
-offset_bottom = 210.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 texture_normal = ExtResource("4_15o60")
 stretch_mode = 0
 
@@ -196,25 +168,19 @@ theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "[center]Credits[/center]"
 
-[node name="Logout" type="TextureButton" parent="MainMenuSelectionScreen/MenuOptions"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -541.0
-offset_top = 164.0
-offset_right = -256.0
-offset_bottom = 218.0
+[node name="Logout" type="TextureButton" parent="MainMenuSelectionScreen"]
+layout_mode = 2
+offset_left = 39.0
+offset_top = 522.0
+offset_right = 324.0
+offset_bottom = 576.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.70874, 0.70874)
 texture_normal = ExtResource("4_15o60")
 stretch_mode = 0
 metadata/_edit_group_ = true
 
-[node name="ButtonText" type="RichTextLabel" parent="MainMenuSelectionScreen/MenuOptions/Logout"]
+[node name="ButtonText" type="RichTextLabel" parent="MainMenuSelectionScreen/Logout"]
 layout_mode = 0
 offset_left = -1.0
 offset_top = 8.0
@@ -228,17 +194,17 @@ text = "[center]Logout[/center]"
 
 [node name="GameTitle" type="RichTextLabel" parent="MainMenuSelectionScreen"]
 layout_mode = 1
-offset_left = 210.0
-offset_top = 147.0
-offset_right = 948.0
-offset_bottom = 372.0
+offset_left = 216.0
+offset_top = 107.0
+offset_right = 954.0
+offset_bottom = 332.0
 pivot_offset = Vector2(368, 78.84)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/normal_font = ExtResource("8_u0njc")
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
-text = "[center]Drop Game[/center]"
+text = "[center]Himanka Game[/center]"
 
 [node name="FoodItems" type="Control" parent="MainMenuSelectionScreen"]
 anchors_preset = 0
@@ -295,6 +261,7 @@ bus = &"Music"
 [connection signal="pressed" from="MainMenuSelectionScreen/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="MainMenuSelectionScreen/MenuOptions/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenuSelectionScreen/MenuOptions/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenuSelectionScreen/MenuOptions/GalleryButton" to="." method="_on_gallery_button_pressed"]
 [connection signal="pressed" from="MainMenuSelectionScreen/MenuOptions/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]
 [connection signal="pressed" from="MainMenuSelectionScreen/MenuOptions/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="MainMenuSelectionScreen/MenuOptions/Logout" to="." method="_on_logout_pressed"]
+[connection signal="pressed" from="MainMenuSelectionScreen/Logout" to="." method="_on_logout_pressed"]

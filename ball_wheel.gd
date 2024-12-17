@@ -24,6 +24,8 @@ var ball_revealed = [true, true, false, false, false, false, false, false];
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	SignalBus.popped.connect(_on_ball_popped);
+	SignalBus.game_over.connect(_on_game_over);
 	update_textures();
 
 func update_textures():
