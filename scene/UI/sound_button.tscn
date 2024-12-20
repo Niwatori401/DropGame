@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dedldrw5n0p42"]
 
 [ext_resource type="Script" path="res://script/sound_button.gd" id="1_c6qkm"]
-[ext_resource type="AudioStream" uid="uid://1frq4gi2a2k7" path="res://asset/sound/sfx/menu_click.ogg" id="2_5hxlt"]
+[ext_resource type="AudioStream" uid="uid://d3t5xyy57chlf" path="res://audio/menu_click.ogg" id="2_5hxlt"]
 
 [node name="SoundButton" type="Button"]
 anchors_preset = 15

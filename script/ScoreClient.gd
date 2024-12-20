@@ -14,7 +14,7 @@ func _ready():
 	base_url = Config.get_config().get_value(Config.SECTION_APPLICATION, Config.KEY_BASEURL, "");
 	if base_url == "":
 		printerr("Bad config for URL, using default.");
-		base_url = "http://niwatori.party";
+		base_url = Config.DEFAULT_URL;
 		
 	get_user_by_name(Config.get_config().get_value(Config.SECTION_ACCOUNT, Config.KEY_USERNAME));
 	get_n_users_from_m(amount_per_page, current_index);
