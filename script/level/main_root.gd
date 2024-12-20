@@ -7,9 +7,6 @@ var should_fade_out = false;
 # RUNNING GAMEOVER
 var game_state : String = "RUNNING";
 
-var config = ConfigFile.new();
-var base_url = "http://localhost:8080"
-
 #Prevents submitting the score multiple times due to the ball bouncing on the end line
 var submitted_score = false;
 func _ready():
@@ -19,7 +16,7 @@ func _ready():
 	$DarkScreen.modulate.a = 1;
 	$GameOver.modulate.a = 0;
 	$GameOver.hide();
-	config.load("user://config.cfg");
+
 
 
 func _process(delta):
@@ -46,6 +43,7 @@ func _process(delta):
 
 func restart_game():
 	$Score/ScoreLabel.score = 0;
+	$GameOver/ScoreStatusLabel.set_text("");
 	$GameOver.hide();
 	$BGM.stop();
 	$BGM.play();
@@ -61,7 +59,7 @@ func restart_game():
 
 func _on_game_over():
 	$GameOver.show();
-	if (config.get_value("account", "useAccount") and !submitted_score):
+	if (Config.get_config().get_value(Config.SECTION_ACCOUNT, Config.KEY_USEACCOUNT) and !submitted_score):
 		submitted_score = true;
 		post_new_score_for_user($Score/ScoreLabel.get_score());
 		
@@ -70,8 +68,9 @@ func _on_game_over():
 func post_new_score_for_user(score: int):
 	$HTTPScoreSubmit.request_completed.connect(self.on_score_submitted)
 	$GameOver/ScoreStatusLabel.set_text("[center][color=darkyellow]Submitting score...[/color][/center]");
-	var json = '{"passhash":"%s", "userId": {"userName":"%s"}, "score":%d}' % [config.get_value("account", "password").hash(), config.get_value("account", "username"), score];
+	var json = '{"passhash":"%s", "userId": {"userName":"%s"}, "score":%d}' % [Config.get_config().get_value(Config.SECTION_ACCOUNT, Config.KEY_PASSWORD).hash(), Config.get_config().get_value(Config.SECTION_ACCOUNT, Config.KEY_USERNAME), score];
 	var headers = ["Content-Type: application/json"]
+	var base_url = Config.get_config().get_value(Config.SECTION_APPLICATION, Config.KEY_BASEURL);
 	var url = "%s/score/newScore" % base_url
 	$HTTPScoreSubmit.request(url, headers, HTTPClient.METHOD_POST, json)
 

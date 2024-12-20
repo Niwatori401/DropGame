@@ -21,6 +21,7 @@ config/icon="res://icon.png"
 Globals="*res://scene/global/globals.tscn"
 Init="*res://script/global/init.gd"
 SignalBus="*res://script/global/signal_bus.gd"
+Config="*res://script/global/config.gd"
 
 [display]
 

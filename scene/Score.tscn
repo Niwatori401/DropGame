@@ -14,5 +14,6 @@ offset_bottom = 153.0
 theme = SubResource("Theme_03bm5")
 theme_override_fonts/normal_font = ExtResource("1_3qvw5")
 theme_override_font_sizes/normal_font_size = 69
-text = "Score: 100"
+bbcode_enabled = true
+text = "[center]Score: 100[/center]"
 script = ExtResource("1_4nnbi")

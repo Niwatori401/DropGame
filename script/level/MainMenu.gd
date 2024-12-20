@@ -10,17 +10,13 @@ var current_title_size = 1;
 var TITLE_GROWTH_RATE = 0.02;
 
 
-var config = ConfigFile.new();
-
-
 func _ready():
 
 	$BGM.play();
 
 	$MainMenuSelectionScreen/DarkScreen.show();
 	$MainMenuSelectionScreen/DarkScreen.modulate.a = 1;
-	config.load("user://config.cfg");
-	if !config.get_value("account", "useAccount"):
+	if !Config.get_config().get_value(Config.SECTION_ACCOUNT, Config.KEY_USEACCOUNT):
 		$MainMenuSelectionScreen/MenuOptions/LeaderboardButton.hide();
 
 func _process(delta):
@@ -76,10 +72,10 @@ func _on_credits_pressed():
 
 
 func _on_logout_pressed():
-	config.erase_section_key("account", "useAccount");
-	config.erase_section_key("account", "username");
-	config.erase_section_key("account", "password");
-	config.save("user://config.cfg");
+	Config.get_config().erase_section_key(Config.SECTION_ACCOUNT, Config.KEY_USEACCOUNT);
+	Config.get_config().erase_section_key(Config.SECTION_ACCOUNT, Config.KEY_USERNAME);
+	Config.get_config().erase_section_key(Config.SECTION_ACCOUNT, Config.KEY_PASSWORD);
+	Config.commit_changes();
 	should_fade_out = true;
 	get_tree().create_timer(1).timeout.connect(func(): get_tree().change_scene_to_file("res://scene/level/user_entry.tscn"));
 

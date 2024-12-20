@@ -27,7 +27,7 @@ scale = Vector2(0.55, 0.55)
 texture = ExtResource("3_cn5kn")
 
 [node name="ball3icon" type="Sprite2D" parent="."]
-position = Vector2(131, 112)
+position = Vector2(131, 122)
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("4_ivtj0")
 
@@ -42,7 +42,7 @@ scale = Vector2(0.55, 0.55)
 texture = ExtResource("6_3s736")
 
 [node name="ball6icon" type="Sprite2D" parent="."]
-position = Vector2(-185, -7)
+position = Vector2(-185, -2)
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("7_sedm8")
 
