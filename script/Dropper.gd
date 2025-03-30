@@ -12,7 +12,7 @@ const ball_sprite_scale_for_next_next = 0.14;
 var can_drop = true;
 var can_move = true;
 
-var debug = true;
+var debug = false;
 
 var current_ball_index : int
 var next_ball_index : int
@@ -36,11 +36,15 @@ func _ready():
 func _process(delta):
 	if !can_move:
 		return;
-		
+	
+	var move_modifier : float = 1;
+	if Input.is_action_pressed("slow"):
+		move_modifier = 0.5;
+	
 	if Input.is_action_pressed("move_left"):
-		position_offset -= delta * move_speed
+		position_offset -= delta * move_speed * move_modifier;
 	if Input.is_action_pressed("move_right"):
-		position_offset += delta * move_speed
+		position_offset += delta * move_speed * move_modifier;
 	if Input.is_action_just_pressed("drop_ball") and can_drop:
 		can_drop = false;
 		$DropTimer.start();

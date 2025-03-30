@@ -9,10 +9,11 @@ func _ready():
 
 	if !Config.get_config().has_section(Config.SECTION_ACCOUNT):
 		return;
-
-	$Username/UsernameField.set_text(Config.get_config().get_value(Config.SECTION_ACCOUNT, Config.KEY_USERNAME).strip_edges(true, true));
-	$Password/PasswordField.set_text(Config.get_config().get_value(Config.SECTION_ACCOUNT, Config.KEY_PASSWORD).strip_edges(true, true));
-	_on_submit_button_pressed()
+	
+	if Config.get_config().has_section_key(Config.SECTION_ACCOUNT, Config.KEY_USERNAME) and Config.get_config().has_section_key(Config.SECTION_ACCOUNT, Config.KEY_PASSWORD):
+		$Username/UsernameField.set_text(Config.get_config().get_value(Config.SECTION_ACCOUNT, Config.KEY_USERNAME).strip_edges(true, true));
+		$Password/PasswordField.set_text(Config.get_config().get_value(Config.SECTION_ACCOUNT, Config.KEY_PASSWORD).strip_edges(true, true));
+		$SubmitButton.pressed.emit();
 	
 func _process(delta):
 	if should_fade_out:
@@ -33,8 +34,8 @@ func _on_submit_button_pressed():
 
 func _on_skip_button_pressed():
 	Config.get_config().set_value(Config.SECTION_ACCOUNT, Config.KEY_USEACCOUNT, false);
-	Config.get_config().set_value(Config.SECTION_ACCOUNT, Config.KEY_USERNAME, "NONE")
-	Config.get_config().set_value(Config.SECTION_ACCOUNT, Config.KEY_PASSWORD, "NONE")
+	#Config.get_config().set_value(Config.SECTION_ACCOUNT, Config.KEY_USERNAME, "NONE")
+	#Config.get_config().set_value(Config.SECTION_ACCOUNT, Config.KEY_PASSWORD, "NONE")
 	should_fade_out = true;
 	get_tree().create_timer(1.5).timeout.connect(func(): get_tree().change_scene_to_file("res://scene/level/main_menu.tscn"))
 	Config.commit_changes();
